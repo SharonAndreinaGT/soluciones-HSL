@@ -8,6 +8,7 @@
     <div class="content-container">
       <div class="row">
         <div class="col-4">
+          <label for="">Tareas pendientes</label>
           <div>
           <ul class="list-group">
             <li *ngFor="let tasks of tasks" class="list-group-item"
@@ -17,7 +18,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-6">
         <div>
           <div class="form-group">
             <label for="">Descripcion</label>
@@ -30,13 +31,13 @@
           </div>
           <div class="form-group">
             <label for="">Fecha de inicio estimada</label>
-            <input type="numbers" [(ngModel)]="selectedTasks.fechaInicioEstimada" fechaInicioEstimada="fechaInicioEstimada" placeholder="Fecha de Inicio Estimada"
-            class="form-control">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedTasks.fechaInicioEstimada"
+            ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
           </div>
           <div class="form-group">
-            <label for="">Fecha de Inicio Real</label>
-            <input type="numbers" [(ngModel)]="selectedTasks.fechaInicioReal" fechaInicioReal="fechaInicioReal" placeholder="Fecha de Inicio Real"
-              class="form-control">
+            <label for="">Fecha de Inicio</label>
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedTasks.fechaInicioReal"
+              ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
           </div>
           <div class="form-group">
             <label for="">Duracion Estimada</label>
@@ -53,9 +54,25 @@
             <input type="text" [(ngModel)]="selectedTasks.nombreClave" nombreClave="nombreClave" placeholder="Nombre en Clave de proyecto"
               class="form-control">
           </div>
+          <div class="form-group">
+            <label for="">Descripcion del documento</label>
+            <input type="text" [(ngModel)]="selectedTasks.descripcion_doc" descripcion_doc="descripcion_doc" placeholder="Descripcion del documento"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Documento de especificacion de requisitos</label>
+            <input type="text" [(ngModel)]="selectedTasks.requisitos" requisitos="requisitos" placeholder="Documento de especificacion de requisitos"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Codigo fuente de un componente</label>
+            <input type="text" [(ngModel)]="selectedTasks.cod_fuente" cod_fuente="cod_fuente" placeholder="Codigo fuente de un componente"
+              class="form-control">
+          </div> 
         </div>
         <div class="form-group">
           <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+          <button type="button" class="btn btn-primary">Modificar</button>
           <button *ngIf="selectedTasks.id !== 0" type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
         </div>
       </div>

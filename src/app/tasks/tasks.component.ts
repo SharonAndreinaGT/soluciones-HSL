@@ -16,7 +16,10 @@ export class TasksComponent {
       fechaInicioReal:2-8-2022,
       duracionEstimada:"Un mes",
       duracionReal:"Tres meses",
-      nombreClave:"JJ8"
+      nombreClave:"JJ8",
+      descripcion_doc: "",
+      requisitos: "",
+      cod_fuente: 53698
     },
     {
       id: 2,
@@ -26,7 +29,10 @@ export class TasksComponent {
       fechaInicioReal:13-10-2022,
       duracionEstimada:"Un mes",
       duracionReal:"Tres meses",
-      nombreClave:"JJ8"
+      nombreClave:"JJ8",  
+      descripcion_doc: "", 
+      requisitos: "",
+      cod_fuente: 69865,
     },
     {
       id: 3,
@@ -36,7 +42,10 @@ export class TasksComponent {
       fechaInicioReal: 2-8-2022,
       duracionEstimada:"Un mes",
       duracionReal:"Tres meses",
-      nombreClave:"JJ8"
+      nombreClave:"JJ8",
+      descripcion_doc: "",
+      requisitos: "",
+      cod_fuente: 39876,
     }
 
   ];

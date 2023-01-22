@@ -1,28 +1,24 @@
-  <button mat-button class="menu-button">
-      <mat-icon>assignment</mat-icon>
-      <span routerLink="/projects">Proyectos</span>
-  </button>
-  <button mat-button class="menu-button">
-      <mat-icon>person</mat-icon>
-      <span routerLink="/users">Empleados</span>
-  </button>
-  <button mat-button class="menu-button">
-      <mat-icon>event note</mat-icon>
-      <span routerLink="/tasks">Tareas</span>
-  </button>
-  <button mat-button class="menu-button">
-    <mat-icon>label outline</mat-icon>
-    <span routerLink="/version">Version</span>
-</button>
-<button mat-button class="menu-button">
-  <mat-icon>star half</mat-icon>
-  <span routerLink="/documentos">Documentos</span>
-</button>
+<span (click)="menuDropdown()" class="menu-btn">
+    Menú
+</span>
+<div #menuSidebar class="menu-hide">
+    <button mat-button class="menu-button">
+        <mat-icon>assignment</mat-icon>
+        <span routerLink="/projects">Proyectos</span>
+    </button>
+    <button mat-button class="menu-button">
+        <mat-icon>person</mat-icon>
+        <span routerLink="/users">Empleados</span>
+    </button>
+    <button mat-button class="menu-button">
+        <mat-icon>event note</mat-icon>
+        <span routerLink="/tasks">Tareas</span>
+    </button>
 
-  <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
 
-  <button mat-button class="menu-button">
-      <mat-icon>input</mat-icon>
-      <span routerLink="/login">Cerrar Sesión</span>
-  </button>
-
+    <button mat-button class="menu-button">
+        <mat-icon>input</mat-icon>
+        <span routerLink="/login">Cerrar Sesión</span>
+    </button>
+</div>

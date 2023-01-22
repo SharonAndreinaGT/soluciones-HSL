@@ -8,6 +8,7 @@
     <div class="content-container">
       <div class="row">
         <div class="col-4">
+          <label for="">Empleados registrados</label>
           <div>
             <ul class="list-group">
               <li *ngFor="let users of users" class="list-group-item"
@@ -17,7 +18,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-6">
           <div>
             <div class="form-group">
               <label for="">Nombre</label>
@@ -56,6 +57,7 @@
         </div>
         <div class="form-group">
           <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+          <button type="button" class="btn btn-primary">Modificar</button>
           <button *ngIf="selectedUsers.id !== 0" type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
         </div>
       </div>

@@ -26,8 +26,6 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { UsersComponent } from './users/users.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { VersionComponent } from './version/version.component';
-import { DocumentosComponent } from './documentos/documentos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -43,8 +41,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       { path: 'projects', component: ProjectsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'tasks', component: TasksComponent },
-      { path: 'version', component: VersionComponent },
-      { path: 'documentos', component: DocumentosComponent },
     ]),
 
     BrowserAnimationsModule,
@@ -69,8 +65,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SidebarMenuComponent,
     UsersComponent,
     TasksComponent,
-    VersionComponent,
-    DocumentosComponent,
   ],
   bootstrap: [
     AppComponent

@@ -7,4 +7,7 @@ export class Tasks {
   duracionEstimada: string;
   duracionReal:string;
   nombreClave: string;
+  requisitos: string;
+  cod_fuente: number;
+  descripcion_doc: string;
 }
