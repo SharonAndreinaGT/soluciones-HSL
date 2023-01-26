@@ -1,31 +1,26 @@
 
-
-<body>
   <hr class="badge-primary">
-<h1 class="text-center">Soluciones HSL</h1>
-
-<p class="text-center">Es una empresa que ayuda a diversos empleados con la gestion de proyectos, 
-  brindandole apoyo a la hora de crear, modificar o eliminar tanto proyectos como tareas pendientes.
-</p>
-
-</body>
+  <a class="text-center logo-login">
+    <img src="../../assets/img/logo.png" alt="">
+  </a>
+  <div>
+    <p class="text-center slogan-text">Es una empresa que ayuda a diversos empleados con la gestion de proyectos,
+      brindandole apoyo a la hora de crear, modificar o eliminar tanto proyectos como tareas pendientes.
+    </p>
+  </div>
 
 <div class="card login-card">
   <div class="card-content">
     <div class="form-group">
       <label for="">Email</label>
-      <input type="text" [(ngModel)]="email" tipo="tipo" placeholder="Email"
-        class="form-control">
+      <input type="text" [(ngModel)]="email" tipo="tipo" placeholder="Email" class="form-control">
     </div>
     <div class="form-group">
       <label for="">Contraseña</label>
-      <input type="text" [(ngModel)]="password" tipo="tipo" placeholder="Password"
-        class="form-control">
+      <input type="text" [(ngModel)]="password" tipo="tipo" placeholder="Password" class="form-control">
     </div>
-    <div class="form-group">
+    <div class="form-group text-center my-4">
       <button type="button" class="btn btn-primary" (click)="login()">Login</button>
     </div>
   </div>
 </div>
-
-

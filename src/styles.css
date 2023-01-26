@@ -106,7 +106,7 @@ mat-divider {
   width: 400px;
   padding: 20px;
   margin: auto;
-  top: 100px;
+  top: 35px;
 }
 
 .row {
@@ -138,6 +138,32 @@ body {
   text-align: center;
 }
 
-.table-body .td-icons span {
+.table-body .td-icons a {
   margin: 0 10px;
+}
+
+
+.table-body .td-icons a i {
+  font-size: 20px;
+}
+
+.blue-color {
+  color: darkblue;
+}
+
+.celeste-color {
+  color: darkgoldenrod;
+}
+
+.green-color {
+  color: darkgreen;
+}
+
+.red-color {
+  color: darkred;
+}
+
+.container-table {
+  padding: 25px;
+  margin-top: 80px;
 }

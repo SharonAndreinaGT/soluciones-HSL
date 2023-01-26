@@ -1,5 +1,11 @@
 mat-toolbar {
   background: #004a9f;
   color: white;
+  box-shadow: 2px 10px 16px -11px rgb(7 65 173 / 71%);
+  height: 80px;
+}
+
+mat-toolbar img {
+  width: 180px;
 }
 

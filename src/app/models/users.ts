@@ -6,5 +6,5 @@ export class Users {
   direccion: string;
   correoElectronico: string;
   telefono: number;
-  fechaContratacion: number;
+  fechaContratacion: Date;
 }

@@ -9,3 +9,13 @@ mat-form-field {
   max-width: 215px;
 }
 
+.logo-login {
+  width: 100%;
+  display: block;
+}
+
+.slogan-text {
+  padding: 0 150px;
+    font-weight: 600;
+    margin-top: 35px;
+}

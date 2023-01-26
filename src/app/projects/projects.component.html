@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="container-table" >
+<div class="container-table">
   <div class="row">
     <div class="col-6">
       <label for="" class="label-title">Projects</label>
@@ -35,10 +35,16 @@
             <td>{{project.denominacion_comercial}}</td>
             <td>{{project.estado_actual}}</td>
             <td class="td-icons">
-              <a (click)="openForEdit(project)" type="button" data-bs-toggle="modal"
-              data-bs-target="#modalFormProject"><i class="bi bi-pencil-square"></i></a>
-              <span><i class="bi bi-file-earmark-medical"></i></span>
-              <span (click)="delete(project)"><i class="bi bi-trash"></i></span>
+              <a (click)="openForEdit(project)" type="button" data-bs-toggle="modal" data-bs-target="#modalFormProject"
+                data-toggle="tooltip" data-placement="bottom" title="Editar Proyecto">
+                <i class="bi bi-pencil-square blue-color"></i></a>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks" data-toggle="tooltip"
+                data-placement="bottom" title="Ver Tareas">
+                <i class="bi bi-eye celeste-color"></i></a>
+              <a data-toggle="tooltip" data-placement="bottom" title="Crear Tarea">
+                <i class="bi bi-file-earmark-plus green-color"></i></a>
+              <a (click)="delete(project)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Proyecto">
+                <i class="bi bi-trash red-color"></i></a>
             </td>
           </tr>
         </tbody>
@@ -47,7 +53,9 @@
   </div>
 </div>
 
-<div class="modal fade" #modalFormProject id="modalFormProject" tabindex="-1" aria-labelledby="modalFormProject" aria-hidden="true">
+<!-- MODAL PROJECTS -->
+
+<div class="modal fade" id="modalFormProject" tabindex="-1" aria-labelledby="modalFormProject" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -55,15 +63,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="form-group" >
+        <div class="form-group">
           <span class="align-baseline"><label for="">Codigo</label></span>
-          <input type="text" [(ngModel)]="selectedProject.codigo" placeholder="Codigo"
-            class="form-control">
+          <input type="text" [(ngModel)]="selectedProject.codigo" placeholder="Codigo" class="form-control">
         </div>
         <div class="form-group">
           <span class="align-baseline"><label for="">Nombre en clave</label></span>
-          <input type="text" [(ngModel)]="selectedProject.nombre" placeholder="Nombre en clave"
-            class="form-control">
+          <input type="text" [(ngModel)]="selectedProject.nombre" placeholder="Nombre en clave" class="form-control">
         </div>
         <div class="form-group">
           <label for="">Denominacion comercial</label>
@@ -79,6 +85,26 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TASKS -->
+
+<div class="modal fade" id="modalTasks" tabindex="-1" aria-labelledby="modalTasks" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Tareas</h1>
+      </div>
+      <div class="modal-body">
+        Lorem Ipsum
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+
       </div>
     </div>
   </div>

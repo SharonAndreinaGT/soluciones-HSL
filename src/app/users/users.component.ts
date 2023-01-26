@@ -16,7 +16,7 @@ export class UsersComponent {
       direccion: "",
       correoElectronico:"",
       telefono: 412659832,
-      fechaContratacion: 12-1-2023
+      fechaContratacion: new Date ('2023-02-02')
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ export class UsersComponent {
       direccion: "",
       correoElectronico:"",
       telefono: 412659832,
-      fechaContratacion: 12-2-2022
+      fechaContratacion: new Date ('2023-02-02')
     },
     {
     id: 3,
@@ -36,7 +36,7 @@ export class UsersComponent {
     direccion: "",
     correoElectronico:"",
     telefono: 42666832,
-    fechaContratacion: 1-2-2022
+    fechaContratacion: new Date ('2023-02-02')
     }
 
 
