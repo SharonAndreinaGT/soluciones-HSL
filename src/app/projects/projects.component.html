@@ -31,7 +31,7 @@
         <tbody class="table-body">
           <tr *ngFor="let project of projects">
             <th scope="row">{{project.codigo}}</th>
-            <td>{{project.nombre_clave}}</td>
+            <td>{{project.nombre}}</td>
             <td>{{project.denominacion_comercial}}</td>
             <td>{{project.estado_actual}}</td>
             <td class="td-icons">
@@ -56,22 +56,22 @@
       <div class="modal-body">
         <div class="form-group">
           <span class="align-baseline"><label for="">Codigo</label></span>
-          <input type="text" [(ngModel)]="selectedProject.codigo" codigo="codigo" placeholder="Codigo"
+          <input type="text" [(ngModel)]="selectedProject.codigo" placeholder="Codigo"
             class="form-control">
         </div>
         <div class="form-group">
           <span class="align-baseline"><label for="">Nombre en clave</label></span>
-          <input type="text" [(ngModel)]="selectedProject.nombre_clave" nombre_clave="nombre_clave" placeholder="Nombre en clave"
+          <input type="text" [(ngModel)]="selectedProject.nombre" placeholder="Nombre en clave"
             class="form-control">
         </div>
         <div class="form-group">
           <label for="">Denominacion comercial</label>
-          <input type="text" [(ngModel)]="selectedProject.denominacion_comercial" denominacion_comercial="denominacion_comercial" placeholder="Denominacion comercial"
+          <input type="text" [(ngModel)]="selectedProject.denominacion_comercial" placeholder="Denominacion comercial"
             class="form-control">
         </div>
         <div class="form-group">
           <label for="">Estado actual</label>
-          <input type="text" [(ngModel)]="selectedProject.estado_actual" estado_actual="estado_actual" placeholder="Estado actual"
+          <input type="text" [(ngModel)]="selectedProject.estado_actual" placeholder="Estado actual"
             class="form-control">
         </div>
       </div>

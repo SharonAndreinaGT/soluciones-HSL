@@ -11,10 +11,8 @@ export class SidebarMenuComponent {
 
   menuDropdown () {
     if (this.menuSidebar.nativeElement.classList.contains('menu-hide')){
-      console.log('true');
       this.menuSidebar.nativeElement.classList.remove('menu-hide'); 
     } else {
-      console.log('false');
       this.menuSidebar.nativeElement.classList.add('menu-hide'); 
     }
   }

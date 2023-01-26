@@ -58,7 +58,7 @@ export class UsersComponent {
     this.selectedUsers = users;
   }
 
-  delete(){
+  delete(users : Users){
     if(confirm('Seguro que deseas eliminar este empleado?')){
       this.users = this.users.filter( x => x.id !== this.selectedUsers.id);
       this.selectedUsers = new Users();

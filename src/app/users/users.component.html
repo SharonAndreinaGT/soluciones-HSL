@@ -1,69 +1,116 @@
 <div class="row">
-  <div class="col-2">
+  <div class="col-12">
     <div class="sidebar-menu-container">
       <app-sidebar-menu></app-sidebar-menu>
     </div>
   </div>
-  <div class="col-10">
-    <div class="content-container">
-      <div class="row">
-        <div class="col-4">
-          <label for="">Empleados registrados</label>
-          <div>
-            <ul class="list-group">
-              <li *ngFor="let users of users" class="list-group-item"
-              (click)="openForEdit(users)" [class.active]="users == selectedUsers ">
-                <span class="badge badge-primary"> {{users.id}} </span> {{ users.nombre }}
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-6">
-          <div>
-            <div class="form-group">
-              <label for="">Nombre</label>
-              <input type="text" [(ngModel)]="selectedUsers.nombre" nombre="nombre" placeholder="Nombre"
-                class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Apellido</label>
-              <input type="text" [(ngModel)]="selectedUsers.apellido" apellido="apellido" placeholder="Apellido"
-                class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Cedula</label>
-              <input type="numbers" [(ngModel)]="selectedUsers.cedula" cedula="cedula" placeholder="Cedula"
-              class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Direccion</label>
-              <textarea class="form-control" [(ngModel)]="selectedUsers.direccion" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="">Correo Electronico</label>
-              <input type="text" [(ngModel)]="selectedUsers.correoElectronico" correoElectronico="correoElectronico" placeholder="CorreoElectronico"
-                class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Telefono</label>
-              <input type="numbers" [(ngModel)]="selectedUsers.telefono" telefono="telefono" placeholder="Telefono"
-                class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Fecha de Contratacion</label>
-              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedUsers.fechaContratacion"
-                ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
-            </div>
+</div>
+
+<div class="container-table" >
+  <div class="row">
+    <div class="col-6">
+      <label for="" class="label-title">users</label>
+    </div>
+    <div class="col-6">
+      <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal"
+        data-bs-target="#modalFormUser">Agregar Tarea</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Correo Electronico</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Fecha de Contratacion</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <tr *ngFor="let users of users">
+            <th scope="row">{{users.nombre}}</th>
+            <td>{{users.apellido}}</td>
+            <td>{{users.cedula}}</td>
+            <td>{{users.direccion}}</td>
+            <td>{{users.correoElectronico}}</td>
+            <td>{{users.telefono}}</td>
+            <td>{{users.fechaContratacion}}</td>
+            <td class="td-icons">
+              <span (click)="openForEdit(users)"><i class="bi bi-pencil-square"></i></span>
+              <span><i class="bi bi-file-earmark-medical"></i></span>
+              <span (click)="delete(users)"><i class="bi bi-trash"></i></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalFormUser" tabindex="-1" aria-labelledby="modalFormUser" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Nueva Tarea</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Nombre</label></span>
+          <input type="text" [(ngModel)]="selectedUsers.nombre" nombre="nombre" placeholder="Nombre"
+            class="form-control">
         </div>
         <div class="form-group">
-          <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
-          <button type="button" class="btn btn-primary">Modificar</button>
-          <button *ngIf="selectedUsers.id !== 0" type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
+          <label for="">Nombre</label>
+          <input type="text" [(ngModel)]="selectedUsers.nombre" nombre="nombre" placeholder="Nombre"
+            class="form-control">
         </div>
+        <div class="form-group">
+          <label for="">Apellido</label>
+          <input type="text" [(ngModel)]="selectedUsers.apellido" apellido="apellido" placeholder="Apellido"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Cedula</label>
+          <input type="numbers" [(ngModel)]="selectedUsers.cedula" cedula="cedula" placeholder="Cedula"
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Direccion</label>
+          <textarea class="form-control" [(ngModel)]="selectedUsers.direccion" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="">Correo Electronico</label>
+          <input type="text" [(ngModel)]="selectedUsers.correoElectronico" correoElectronico="correoElectronico" placeholder="CorreoElectronico"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Telefono</label>
+          <input type="numbers" [(ngModel)]="selectedUsers.telefono" telefono="telefono" placeholder="Telefono"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Fecha de Contratacion</label>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedUsers.fechaContratacion"
+            ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
 
 
 
