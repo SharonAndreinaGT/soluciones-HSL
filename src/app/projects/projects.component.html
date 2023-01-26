@@ -35,7 +35,8 @@
             <td>{{project.denominacion_comercial}}</td>
             <td>{{project.estado_actual}}</td>
             <td class="td-icons">
-              <span (click)="openForEdit(project)"><i class="bi bi-pencil-square"></i></span>
+              <a (click)="openForEdit(project)" type="button" data-bs-toggle="modal"
+              data-bs-target="#modalFormProject"><i class="bi bi-pencil-square"></i></a>
               <span><i class="bi bi-file-earmark-medical"></i></span>
               <span (click)="delete(project)"><i class="bi bi-trash"></i></span>
             </td>
@@ -46,7 +47,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="modalFormProject" tabindex="-1" aria-labelledby="modalFormProject" aria-hidden="true">
+<div class="modal fade" #modalFormProject id="modalFormProject" tabindex="-1" aria-labelledby="modalFormProject" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -54,7 +55,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <div class="form-group" >
           <span class="align-baseline"><label for="">Codigo</label></span>
           <input type="text" [(ngModel)]="selectedProject.codigo" placeholder="Codigo"
             class="form-control">

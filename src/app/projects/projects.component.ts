@@ -11,11 +11,9 @@ import { Observable } from 'rxjs';
 })
 
 export class ProjectsComponent implements OnInit {
-   /*
-    Conectarse al backend.
-    Consultar los proyectos en Base de Datos
-    El array de Proyectos almacenarlos en la variable projects
-  */
+  
+  @ViewChild('content') content: any;
+
     projects: Projects[];
     constructor(private http: HttpClient) { }
 
@@ -34,12 +32,26 @@ export class ProjectsComponent implements OnInit {
         this.projects.push(this.selectedProject);
         this.selectedProject = new Projects();
       });             
-    }  
+    }  else {
+      this.http.patch<any>('http://localhost:8000/modificar/proyecto/'+this.selectedProject.codigo, this.selectedProject).subscribe(data => {
+        
+      })
+    } 
+
+  }
+
+  public open() {
+    if(!true){
+      // Dont open the modal
+    } else {
+       // Open the modal
+       this.content.open();
+    }
 
   }
 
   openForEdit(project: Projects) {
-    
+  
     this.selectedProject = project;
   }
 
