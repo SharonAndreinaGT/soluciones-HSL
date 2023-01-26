@@ -1,127 +1,84 @@
 <div class="row">
-  <div class="col-2">
+  <div class="col-12">
     <div class="sidebar-menu-container">
       <app-sidebar-menu></app-sidebar-menu>
     </div>
   </div>
-  <div class="col-10">
-    <div class="content-container">
-      <div class="row">
-        <div class="col-4">
-          <!-- <span class="align-baseline"><label for="">Proyectos Creados</label></span> 
-          <div>
-            <ul class="list-group">
-              <li *ngFor="let project of projects" class="list-group-item"
-              (click)="openForEdit(project)" [class.active]="project == selectedProject ">
-                <span class="badge badge-primary"> {{project.id}} </span> {{ project.nombre_clave }}
-              </li>
-            </ul>
-          </div> -->
-        </div>
-        <div class="col-6">
-          <div>
-            <div class="form-group">
-              <span class="align-baseline"><label for="">Codigo</label></span>
-              <input type="text" [(ngModel)]="selectedProject.codigo" codigo="codigo" placeholder="Codigo"
-                class="form-control">
-            </div>
-            <div class="form-group">
-              <span class="align-baseline"><label for="">Nombre en clave</label></span>
-              <input type="text" [(ngModel)]="selectedProject.nombre_clave" nombre_clave="nombre_clave" placeholder="Nombre en clave"
-                class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Denominacion comercial</label>
-              <input type="text" [(ngModel)]="selectedProject.denominacion_comercial" denominacion_comercial="denominacion_comercial" placeholder="Denominacion comercial"
-                class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Estado actual</label>
-              <input type="text" [(ngModel)]="selectedProject.estado_actual" estado_actual="estado_actual" placeholder="Estado actual"
-                class="form-control">
-            </div>
-              <div class="form-group">
-                <label for="">Codigo de version</label>
-                <input type="numbers" [(ngModel)]="selectedProject.codigo_vers" codigo_vers="codigo_vers" placeholder="Codigo"
-                  class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="">Fecha de la version</label>
-                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedProject.fecha"
-                  ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
-              </div>
-            </div>
+</div>
 
-          <div class="btn-group">
-            <label for="">Empleado Asignado</label>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Empleados Registrados
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <button class="dropdown-item" type="button">Action</button>
-              <button class="dropdown-item" type="button">Another action</button>
-              <button class="dropdown-item" type="button">Something else here</button>
-            </div>
-          </div>  
-          <hr> 
-          <div class="btn-group">
-            <label for="">Tarea pendiente </label>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Tareas Pendientes
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <button class="dropdown-item" type="button">Action</button>
-              <button class="dropdown-item" type="button">Another action</button>
-              <button class="dropdown-item" type="button">Something else here</button>
-            </div>
-          </div> 
-          <div class="form-group">
-            <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
-            <button type="button" class="btn btn-primary">Modificar</button>
-            <button *ngIf="selectedProject.id !== 0" type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
-          </div>         
-        </div>
-      </div>
+<div class="container-table" >
+  <div class="row">
+    <div class="col-6">
+      <label for="" class="label-title">Projects</label>
+    </div>
+    <div class="col-6">
+      <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal"
+        data-bs-target="#modalFormProject">Agregar Proyecto</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Denominación Comercial</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <tr *ngFor="let project of projects">
+            <th scope="row">{{project.codigo}}</th>
+            <td>{{project.nombre_clave}}</td>
+            <td>{{project.denominacion_comercial}}</td>
+            <td>{{project.estado_actual}}</td>
+            <td class="td-icons">
+              <span (click)="openForEdit(project)"><i class="bi bi-pencil-square"></i></span>
+              <span><i class="bi bi-file-earmark-medical"></i></span>
+              <span (click)="delete(project)"><i class="bi bi-trash"></i></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 
-
-<div class="container my-3">
-  <div class="row-left">
-      <div class="col-sm-12 col-md-14 col-lg-4 col-xl-4">
+<div class="modal fade" id="modalFormProject" tabindex="-1" aria-labelledby="modalFormProject" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Nuevo Projecto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-  <th>NUEVO PROYECTO CREADO EXITOSAMENTE</th> 
-  <table class="table table-blue table-striped">
-    <thead>
-        <tr>
-            <th>Codigo</th>
-            <th>Empleado asigando</th>
-            <th>Tarea asignada</th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Proyecto 1</td>
-        <td>Carlos</td>
-        <td>Problema con el panel de control</td>
-      </tr>
-    </tbody>
-  </table>
+      <div class="modal-body">
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Codigo</label></span>
+          <input type="text" [(ngModel)]="selectedProject.codigo" codigo="codigo" placeholder="Codigo"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Nombre en clave</label></span>
+          <input type="text" [(ngModel)]="selectedProject.nombre_clave" nombre_clave="nombre_clave" placeholder="Nombre en clave"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Denominacion comercial</label>
+          <input type="text" [(ngModel)]="selectedProject.denominacion_comercial" denominacion_comercial="denominacion_comercial" placeholder="Denominacion comercial"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Estado actual</label>
+          <input type="text" [(ngModel)]="selectedProject.estado_actual" estado_actual="estado_actual" placeholder="Estado actual"
+            class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-
-   <!-- <button  class="createbutton" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
-      EJEMPLO DE ESTE MENU O DESPLEGABLE O EL BOTON
-        <select class="custom-select">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
- -->
-
-
-

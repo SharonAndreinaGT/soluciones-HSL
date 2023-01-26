@@ -27,6 +27,7 @@
     "@popperjs/core": "^2.11.6",
     "angular-in-memory-web-api": "~0.15.0",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
     "jquery": "^3.6.3",
     "popper.js": "^1.16.1",
     "rxjs": "~7.6.0",
