@@ -43,10 +43,10 @@
             <td>{{tasks.duracion_estimada}}</td>
             <td>{{tasks.codigo_proyecto}}</td>
             <td class="td-icons">
-              <a  type="button" data-bs-toggle="modal" data-bs-target="#modalFormTasks"
+              <a (click)="openForEdit(tasks)" type="button" data-bs-toggle="modal" data-bs-target="#modalFormTasks1"
                 data-toggle="tooltip" data-placement="bottom" title="Editar Tarea">
                 <i class="bi bi-pencil-square blue-color"></i></a>
-              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks1" data-toggle="tooltip"data-toggle="tooltip" 
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks" data-toggle="tooltip"data-toggle="tooltip" 
                 data-placement="bottom" title="Crear Documento" (click)="openForEdit(tasks)">
                 <i class="bi bi-file-earmark-plus green-color"></i></a>
               <a (click)="delete(tasks)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Tarea">
@@ -107,6 +107,52 @@
   </div>
 </div>
 
+<!-- MODAL TASKS2 EDITAR TAREAS -->
+<div class="modal fade" id="modalFormTasks1" tabindex="-1" aria-labelledby="modalFormTasks1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Editar Tareas</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Descripcion</label></span>
+          <input type="text" [(ngModel)]="selectedTasks.descripcion" placeholder="Descripcion" 
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Fecha de Inicio Estimada</label></span>
+          <input type="text" [(ngModel)]="selectedTasks.fecha_estimada" placeholder="Fecha de Inicio Estimada" 
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Fecha de Inicio Real</label></span>
+          <input type="text" [(ngModel)]="selectedTasks.fecha_real" placeholder="Fecha de Inicio Real" 
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Duracion Estimada</label>
+          <input type="text" [(ngModel)]="selectedTasks.duracion_estimada" placeholder="Duracion Estimada"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Duracion Real</label>
+          <input type="text" [(ngModel)]="selectedTasks.duracion_real" placeholder="Duracion Real"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Nombre del proyecto</label>
+          <input type="text" [(ngModel)]="selectedTasks.codigo_proyecto" placeholder="Nombre del proyecto"
+            class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
