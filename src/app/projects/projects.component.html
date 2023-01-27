@@ -9,7 +9,7 @@
 <div class="container-table">
   <div class="row">
     <div class="col-6">
-      <label for="" class="label-title">Projects</label>
+      <label for="" class="label-title">Proyectos</label>
     </div>
     <div class="col-6">
       <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal"
@@ -41,7 +41,8 @@
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks" data-toggle="tooltip"
                 data-placement="bottom" title="Ver Tareas">
                 <i class="bi bi-eye celeste-color"></i></a>
-              <a data-toggle="tooltip" data-placement="bottom" title="Crear Tarea">
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks1" data-toggle="tooltip"data-toggle="tooltip" 
+                data-placement="bottom" title="Crear Tarea" (click)="openForEdit(project)">
                 <i class="bi bi-file-earmark-plus green-color"></i></a>
               <a (click)="delete(project)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Proyecto">
                 <i class="bi bi-trash red-color"></i></a>
@@ -53,13 +54,15 @@
   </div>
 </div>
 
+
+
 <!-- MODAL PROJECTS -->
 
 <div class="modal fade" id="modalFormProject" tabindex="-1" aria-labelledby="modalFormProject" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5">Nuevo Projecto</h1>
+        <h1 class="modal-title fs-5">Agregar Proyecto</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -83,14 +86,15 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MODAL TASKS -->
+
+<!-- MODAL TASKS VER TAREAS -->
 
 <div class="modal fade" id="modalTasks" tabindex="-1" aria-labelledby="modalTasks" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -99,12 +103,51 @@
         <h1 class="modal-title fs-5">Tareas</h1>
       </div>
       <div class="modal-body">
-        Lorem Ipsum
+        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">Cerrar</button>
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TASKS1 CREAR TAREAS -->
+
+<div class="modal fade" id="modalTasks1" tabindex="-1" aria-labelledby="modalTasks1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Tareas</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Descripcion</label></span>
+          <input type="text" [(ngModel)]="selectedTarea.descripcion" placeholder="Descripcion" class="form-control">
+        </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Fecha de Inicio Estimada</label></span>
+          <input type="text" [(ngModel)]="selectedTarea.fecha_estimada" placeholder="Fecha de Inicio Estimada" class="form-control">
+        </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Fecha de Inicio Real</label></span>
+          <input type="text" [(ngModel)]="selectedTarea.fecha_real" placeholder="Fecha de Inicio Real" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Duracion Estimada</label>
+          <input type="text" [(ngModel)]="selectedTarea.duracion_estimada" placeholder="Duracion Estimada"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Duracion Real</label>
+          <input type="text" [(ngModel)]="selectedTarea.duracion_real" placeholder="Duracion Real"
+            class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="crearTarea()">Guardar</button>
       </div>
     </div>
   </div>

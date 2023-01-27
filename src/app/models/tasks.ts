@@ -1,13 +1,11 @@
 export class Tasks {
   id: number = 0;
+  codigo: number;
+  codigo_proyecto: number;
   descripcion: string;
   tipo: string;
-  fechaInicioEstimada: number;
-  fechaInicioReal: number;
-  duracionEstimada: string;
-  duracionReal:string;
-  nombreClave: string;
-  requisitos: string;
-  cod_fuente: number;
-  descripcion_doc: string;
+  fecha_estimada: Date;
+  fecha_real: Date;
+  duracion_estimada: string;
+  duracion_real:string;
 }
