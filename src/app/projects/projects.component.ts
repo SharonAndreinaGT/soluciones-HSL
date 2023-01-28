@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Projects } from '../models/projects';
 import { HttpClient } from '@angular/common/http';
 import { Tasks } from '../models/tasks';
@@ -14,10 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-
-  constructor(private _router: Router,
+  constructor(
+    private _router: Router,
     private http: HttpClient,
-    private userService: UserService) {}
+    private userService: UserService
+  ) {}
 
   selectedProject: Projects = new Projects();
   selectedTarea: Tasks = new Tasks();
@@ -36,9 +34,9 @@ export class ProjectsComponent implements OnInit {
 
   isAdmin() {
     let userAdmin = this.userService.getValue('isAdmin');
-    if (userAdmin == "si") {
+    if (userAdmin == 'si') {
       this.isAdminUser = true;
-    } else if (userAdmin == "no") {
+    } else if (userAdmin == 'no') {
       this.isAdminUser = false;
     } else {
       this._router.navigate(['login']);
@@ -70,7 +68,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   crearTarea() {
-    this.selectedTarea.codigo_proyecto = this.selectedProject.codigo;
     this.http
       .post<any>(
         'http://localhost:8000/proyecto/' +
