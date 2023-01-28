@@ -1,30 +1,46 @@
-
-  <hr class="badge-primary">
-  <a class="text-center logo-login">
-    <img src="../../assets/img/logo.png" alt="">
-  </a>
- 
-  <div>
-    <p class="text-center slogan-text">Somos una empresa dedicada a la gestion de proyectos,
-      brindandole apoyo a cada uno de los empleados a la hora de crear, modificar o eliminar 
-      tanto proyectos como las tareas pendientes asignadas a dichos proyectos. 
-    </p>
+<hr class="badge-primary" />
+<div
+  class="d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center gap-3"
+>
+  <div class="card login-card p-2 me-auto">
+    <div class="card-content">
+      <div class="form-group">
+        <label for="">Email</label>
+        <input
+          type="text"
+          [(ngModel)]="email"
+          tipo="tipo"
+          placeholder="Email"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="">Contraseña</label>
+        <input
+          type="text"
+          [(ngModel)]="password"
+          tipo="tipo"
+          placeholder="Password"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group text-center my-4">
+        <button type="button" class="btn btn-primary" (click)="login()">
+          Login
+        </button>
+      </div>
+    </div>
   </div>
-
-<div class="card login-card">
-  <div class="card-content">
-    <div class="form-group">
-      <label for="">Email</label>
-      <input type="text" [(ngModel)]="email" tipo="tipo" placeholder="Email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="">Contraseña</label>
-      <input type="text" [(ngModel)]="password" tipo="tipo" placeholder="Password" class="form-control">
-    </div>
-    <div class="form-group text-center my-4">
-      <button type="button" class="btn btn-primary" (click)="login()">Login</button>
-    </div>
+  <div
+    class="d-flex flex-column align-items-center gap-3 pe-5"
+    style="width: 60%"
+  >
+    <img src="../../assets/img/logo.png" alt="" />
+    <p class="text-center slogan-text">
+      Somos una empresa dedicada a la gestion de proyectos, brindandole apoyo a
+      cada uno de los empleados a la hora de crear, modificar o eliminar tanto
+      proyectos como las tareas pendientes asignadas a dichos proyectos.
+    </p>
+    <img src="../../assets/img/imagen1.JPG" alt="" style="width: 300px" />
   </div>
 </div>
-<a class="align-center"><img src="../../assets/img/imagen1.JPG" alt="" style="width: 300px;">
-</a>
