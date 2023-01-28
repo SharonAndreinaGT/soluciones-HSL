@@ -7,5 +7,5 @@ export class Tasks {
   fecha_estimada: Date;
   fecha_real: Date;
   duracion_estimada: string;
-  duracion_real:string;
+  duracion_real: string;
 }
