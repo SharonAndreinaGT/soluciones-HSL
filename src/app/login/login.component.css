@@ -19,3 +19,19 @@ mat-form-field {
   font-weight: 600;
   margin-top: 35px;
 }
+
+.info{
+  width: 60%;
+  padding-right: 50px;
+}
+
+@media (max-width:960px){
+  .info{
+    width: 95%;
+    padding-right: 0;
+  }
+
+  .slogan-text{
+    padding: 0 50px;
+  }
+}
