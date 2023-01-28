@@ -56,6 +56,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   crearTarea() {
+    this.selectedTarea.codigo_proyecto = this.selectedProject.codigo;
     this.http
       .post<any>(
         'http://localhost:8000/proyecto/' +
