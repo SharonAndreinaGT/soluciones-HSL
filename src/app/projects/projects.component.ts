@@ -17,9 +17,9 @@ import { Tasks } from '../models/tasks';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  @ViewChild('content') content: any;
 
   projects: Projects[];
+  tasks: Tasks[];
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -52,15 +52,6 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  public open() {
-    if (!true) {
-      // Dont open the modal
-    } else {
-      // Open the modal
-      this.content.open();
-    }
-  }
-
   openForEdit(project: Projects) {
     this.selectedProject = project;
   }
@@ -69,13 +60,19 @@ export class ProjectsComponent implements OnInit {
     this.selectedTarea.codigo = this.selectedProject.codigo;
     this.http
       .post<any>(
-        'http://localhost:8000/proyecto/' +
-          this.selectedProject.codigo +
-          '/crear/tarea',
-        this.selectedTarea
+        'http://localhost:8000/proyecto/' + this.selectedProject.codigo + '/crear/tarea', this.selectedTarea
       )
-      .subscribe((data) => {});
-    console.log('Esta es la tarea ', this.selectedTarea);
+      .subscribe((data) => {
+        this.selectedTarea = new Tasks();
+      });
+  }
+
+  verTareas(project: Projects){
+    this.http.get<any>('http://localhost:8000/proyecto/' +project.codigo +'/tareas').subscribe((data) => {
+     this.tasks = data.tareas;
+     
+    });
+
   }
 
   delete(project: Projects) {

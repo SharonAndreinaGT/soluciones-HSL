@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, ElementRef, TemplateRef, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Users } from '../models/users';
 @Component({
   selector: 'app-users',
@@ -7,41 +9,15 @@ import { Users } from '../models/users';
 })
 export class UsersComponent {
 
-  users: Users[] = [
-    {
-      id: 1,
-      nombre:"Jose",
-      apellido: "Perez",
-      cedula: 29456987,
-      direccion: "",
-      correoElectronico:"",
-      telefono: 412659832,
-      fechaContratacion: new Date ('2023-02-02')
-    },
-    {
-      id: 2,
-      nombre:"Maria",
-      apellido: "Lopez",
-      cedula: 29856971,
-      direccion: "",
-      correoElectronico:"",
-      telefono: 412659832,
-      fechaContratacion: new Date ('2023-02-02')
-    },
-    {
-    id: 3,
-    nombre:"Carlos",
-    apellido: "Mendez",
-    cedula: 7589631,
-    direccion: "",
-    correoElectronico:"",
-    telefono: 42666832,
-    fechaContratacion: new Date ('2023-02-02')
-    }
+  users: Users[];
+  constructor(private http: HttpClient) { }
 
-
-  ];
-
+  ngOnInit() {
+    this.http.get<any>('http://localhost:8000/empleados').subscribe(data => {
+      this.users = data.empleados;
+    }) 
+  }
+ 
   selectedUsers: Users = new Users();
 
   addOrEdit() {
@@ -52,10 +28,6 @@ export class UsersComponent {
     }
     this.selectedUsers = new Users();
     console.log(this.users);
-  }
-
-  openForEdit(users: Users) {
-    this.selectedUsers = users;
   }
 
   delete(users : Users){

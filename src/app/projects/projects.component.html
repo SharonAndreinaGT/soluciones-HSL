@@ -59,6 +59,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Ver Tareas"
+                (click)="verTareas(project)"
               >
                 <i class="bi bi-eye celeste-color"></i
               ></a>
@@ -172,6 +173,7 @@
   </div>
 </div>
 
+
 <!-- MODAL TASKS VER TAREAS -->
 
 <div
@@ -186,15 +188,31 @@
       <div class="modal-header">
         <h1 class="modal-title fs-5">Tareas</h1>
       </div>
-      <div class="card w-75">
-        <div class="card-body">
-          <p class="card-text">
-            Aqui mostrar los datos de la tarea asignada. (Es una tarjeta de
-            bootstrap ya que no debia ser un un campo)
-          </p>
-        </div>
+    
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Duracion Estimada</th>
+              <th scope="col">Duracion Real</th>
+              <th scope="col">Fecha Estimada</th>
+              <th scope="col">Fecha Real</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor ="let task of tasks">
+              <td>{{task.descripcion}}</td>
+              <td>{{task.duracion_estimada}}</td>
+              <td>{{task.duracion_real}}</td>
+              <td>{{task.fecha_estimada}}</td>
+              <td>{{task.fecha_real}}</td>
+              <td>{{task.tipo}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="modal-body"></div>
       <div class="modal-footer">
         <button
           type="button"

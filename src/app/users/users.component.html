@@ -32,22 +32,22 @@
           </tr>
         </thead>
         <tbody class="table-body">
-          <tr *ngFor="let users of users">
-            <th scope="row">{{users.nombre}}</th>
-            <td>{{users.apellido}}</td>
-            <td>{{users.cedula}}</td>
-            <td>{{users.direccion}}</td>
-            <td>{{users.correoElectronico}}</td>
-            <td>{{users.telefono}}</td>
-            <td>{{users.fechaContratacion}}</td>
+          <tr *ngFor="let user of users">
+            <th scope="row">{{user.nombre}}</th>
+            <td>{{user.apellido}}</td>
+            <td>{{user.cedula}}</td>
+            <td>{{user.direccion}}</td>
+            <td>{{user.correoElectronico}}</td>
+            <td>{{user.telefono}}</td>
+            <td>{{user.fechaContratacion}}</td>
             <td class="td-icons">
-              <a (click)="openForEdit(users)" type="button" data-bs-toggle="modal" data-bs-target="#modalFormUser1"
+              <a  type="button" data-bs-toggle="modal" data-bs-target="#modalFormUser1"
               data-toggle="tooltip" data-placement="bottom" title="Editar Empleado">
               <i class="bi bi-pencil-square blue-color"></i></a>
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks" data-toggle="tooltip"
                 data-placement="bottom" title="Ver Tareas">
               <i class="bi bi-eye celeste-color"></i></a>
-              <a (click)="delete(users)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Empleado">
+              <a (click)="delete(user)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Empleado">
                 <i class="bi bi-trash red-color"></i></a>
             </td>
           </tr>
