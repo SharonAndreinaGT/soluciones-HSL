@@ -17,6 +17,7 @@
         class="btn btn-primary add-btn"
         data-bs-toggle="modal"
         data-bs-target="#modalFormUser"
+        *ngIf="isAdminUser"
       >
         Agregar Empleado
       </button>
@@ -48,30 +49,34 @@
             <td>{{ user.fecha_contratacion }}</td>
             <td class="td-icons">
               <a
+                (click)="openForEdit(user)"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#modalFormUser1"
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Editar Empleado"
+                *ngIf="isAdminUser"
               >
                 <i class="bi bi-pencil-square blue-color"></i
               ></a>
               <a
                 type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#modalTasks"
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="Ver Tareas"
+                title="Asignar Proyecto"
+                data-bs-toggle="modal"
+                data-bs-target="#asignarProyectoModal"
+                (click)="traerProyectos(user)"
               >
-                <i class="bi bi-eye celeste-color"></i
-              ></a>
+              <i class="bi bi-file-ppt celeste-color"></i>
+              </a>
               <a
                 (click)="delete(user)"
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Eliminar Empleado"
+                *ngIf="isAdminUser"
               >
                 <i class="bi bi-trash red-color"></i
               ></a>
@@ -82,6 +87,8 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL CREAR EMPLEADO -->
 
 <div
   class="modal fade"
@@ -164,13 +171,9 @@
           <label for="">Fecha de Contratacion</label>
           <input
             class="form-control"
-            placeholder="yyyy-mm-dd"
+            placeholder="AAAA-MM-DD"
             name="dp"
             [(ngModel)]="selectedUsers.fecha_contratacion"
-            ngbDatepicker
-            #d="ngbDatepicker"
-            (focus)="d.toggle()"
-            [autoClose]="'outside'"
           />
         </div>
       </div>
@@ -190,6 +193,8 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL EDITAR EMPLEADO -->
 
 <div
   class="modal fade"
@@ -272,13 +277,9 @@
           <label for="">Fecha de Contratacion</label>
           <input
             class="form-control"
-            placeholder="yyyy-mm-dd"
+            placeholder="YYYY-MM-DD"
             name="dp"
             [(ngModel)]="selectedUsers.fecha_contratacion"
-            ngbDatepicker
-            #d="ngbDatepicker"
-            (focus)="d.toggle()"
-            [autoClose]="'outside'"
           />
         </div>
       </div>
@@ -288,6 +289,52 @@
         </button>
         <button type="button" class="btn btn-primary" (click)="addOrEdit()">
           Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ASIGNAR PROYECTO -->
+
+
+<div
+  class="modal fade"
+  id="asignarProyectoModal"
+  tabindex="-1"
+  aria-labelledby="asignarProyectoModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Asignar Empleado</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check" *ngFor="let project of projects">
+          <input (change)="onItemChange($event)" class="form-check-input" type="radio" name="proyecto" id="{{project.codigo}}">
+          <label class="form-check-label" for="{{project.codigo}}">
+            {{project.codigo}} - {{project.nombre}}
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="btnCerrar"
+          data-bs-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="asignarProyecto()">
+          Asignar
         </button>
       </div>
     </div>

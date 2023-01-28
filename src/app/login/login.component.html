@@ -5,12 +5,12 @@
   <div class="card login-card p-2 me-auto border border-primary">
     <div class="card-content">
       <div class="form-group">
-        <label for="">Email</label>
+        <label for="">Username</label>
         <input
           type="text"
-          [(ngModel)]="email"
+          [(ngModel)]="username"
           tipo="tipo"
-          placeholder="Email"
+          placeholder="Username"
           class="form-control border border-primary"
         />
       </div>
@@ -28,6 +28,9 @@
         <button type="button" class="btn btn-primary" (click)="login()">
           Login
         </button>
+      </div>
+      <div class="form-group text-center my-4" *ngIf="errorValidateLogin">
+        <span class="text-error">Credenciales Incorrectas</span>
       </div>
     </div>
   </div>

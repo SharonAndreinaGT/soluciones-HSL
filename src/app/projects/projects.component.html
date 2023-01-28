@@ -17,6 +17,7 @@
         class="btn btn-primary add-btn"
         data-bs-toggle="modal"
         data-bs-target="#modalFormProject"
+        *ngIf="isAdminUser"
       >
         Agregar Proyecto
       </button>
@@ -49,6 +50,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Editar Proyecto"
+                *ngIf="isAdminUser"
               >
                 <i class="bi bi-pencil-square blue-color"></i
               ></a>
@@ -60,6 +62,7 @@
                 data-placement="bottom"
                 title="Ver Tareas"
                 (click)="verTareas(project)"
+
               >
                 <i class="bi bi-eye celeste-color"></i
               ></a>
@@ -72,6 +75,7 @@
                 data-placement="bottom"
                 title="Crear Tarea"
                 (click)="openForEdit(project)"
+                *ngIf="isAdminUser"
               >
                 <i class="bi bi-file-earmark-plus green-color"></i
               ></a>
@@ -80,6 +84,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Eliminar Proyecto"
+                *ngIf="isAdminUser"
               >
                 <i class="bi bi-trash red-color"></i
               ></a>

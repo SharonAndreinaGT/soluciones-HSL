@@ -2,23 +2,23 @@
     <i class="bi bi-list"></i> Menú
 </span>
 <div #menuSidebar class="menu-hide">
-    <button mat-button class="menu-button">
+    <button routerLink="/projects" mat-button class="menu-button">
         <mat-icon>assignment</mat-icon>
-        <span routerLink="/projects">Proyectos</span>
+        <span >Proyectos</span>
     </button>
-    <button mat-button class="menu-button">
+    <button routerLink="/users" mat-button class="menu-button">
         <mat-icon>person</mat-icon>
-        <span routerLink="/users">Empleados</span>
+        <span >Empleados</span>
     </button>
-    <button mat-button class="menu-button">
+    <button routerLink="/tasks" mat-button class="menu-button">
         <mat-icon>event note</mat-icon>
-        <span routerLink="/tasks">Tareas</span>
+        <span >Tareas</span>
     </button>
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button">
+    <button (click)="cerrarSesion()" mat-button class="menu-button">
         <mat-icon>input</mat-icon>
-        <span routerLink="/login">Cerrar Sesión</span>
+        <span >Cerrar Sesión</span>
     </button>
 </div>

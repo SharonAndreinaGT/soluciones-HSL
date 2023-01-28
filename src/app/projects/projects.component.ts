@@ -1,15 +1,12 @@
 import {
   Component,
-  ViewChild,
-  ElementRef,
-  TemplateRef,
   OnInit,
 } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Projects } from '../models/projects';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Tasks } from '../models/tasks';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -17,19 +14,36 @@ import { Tasks } from '../models/tasks';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
+
+  constructor(private _router: Router,
+    private http: HttpClient,
+    private userService: UserService) {}
+
+  selectedProject: Projects = new Projects();
+  selectedTarea: Tasks = new Tasks();
+
   projects: Projects[];
   tasks: Tasks[];
-  constructor(private http: HttpClient) {}
+
+  isAdminUser: boolean = false;
 
   ngOnInit() {
+    this.isAdmin();
     this.http.get<any>('http://localhost:8000/proyectos').subscribe((data) => {
       this.projects = data.proyectos;
     });
   }
 
-  selectedProject: Projects = new Projects();
-
-  selectedTarea: Tasks = new Tasks();
+  isAdmin() {
+    let userAdmin = this.userService.getValue('isAdmin');
+    if (userAdmin == "si") {
+      this.isAdminUser = true;
+    } else if (userAdmin == "no") {
+      this.isAdminUser = false;
+    } else {
+      this._router.navigate(['login']);
+    }
+  }
 
   addOrEdit() {
     if (this.selectedProject.id === 0) {
