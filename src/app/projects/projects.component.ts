@@ -17,7 +17,6 @@ import { Tasks } from '../models/tasks';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-
   projects: Projects[];
   tasks: Tasks[];
   constructor(private http: HttpClient) {}
@@ -57,22 +56,24 @@ export class ProjectsComponent implements OnInit {
   }
 
   crearTarea() {
-    this.selectedTarea.codigo = this.selectedProject.codigo;
     this.http
       .post<any>(
-        'http://localhost:8000/proyecto/' + this.selectedProject.codigo + '/crear/tarea', this.selectedTarea
+        'http://localhost:8000/proyecto/' +
+          this.selectedProject.codigo +
+          '/crear/tarea',
+        this.selectedTarea
       )
       .subscribe((data) => {
         this.selectedTarea = new Tasks();
       });
   }
 
-  verTareas(project: Projects){
-    this.http.get<any>('http://localhost:8000/proyecto/' +project.codigo +'/tareas').subscribe((data) => {
-     this.tasks = data.tareas;
-     
-    });
-
+  verTareas(project: Projects) {
+    this.http
+      .get<any>('http://localhost:8000/proyecto/' + project.codigo + '/tareas')
+      .subscribe((data) => {
+        this.tasks = data.tareas;
+      });
   }
 
   delete(project: Projects) {
