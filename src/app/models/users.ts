@@ -4,7 +4,7 @@ export class Users {
   apellido: string;
   cedula: number;
   direccion: string;
-  correoElectronico: string;
+  correo: string;
   telefono: number;
-  fechaContratacion: Date;
+  fecha_contratacion: Date;
 }

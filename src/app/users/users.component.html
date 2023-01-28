@@ -6,14 +6,20 @@
   </div>
 </div>
 
-<div class="container-table" >
+<div class="container-table">
   <div class="row">
     <div class="col-6">
       <label for="" class="label-title">Empleados</label>
     </div>
     <div class="col-6">
-      <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal"
-        data-bs-target="#modalFormUser">Agregar Empleado</button>
+      <button
+        type="button"
+        class="btn btn-primary add-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#modalFormUser"
+      >
+        Agregar Empleado
+      </button>
     </div>
   </div>
   <div class="row">
@@ -33,22 +39,42 @@
         </thead>
         <tbody class="table-body">
           <tr *ngFor="let user of users">
-            <th scope="row">{{user.nombre}}</th>
-            <td>{{user.apellido}}</td>
-            <td>{{user.cedula}}</td>
-            <td>{{user.direccion}}</td>
-            <td>{{user.correoElectronico}}</td>
-            <td>{{user.telefono}}</td>
-            <td>{{user.fechaContratacion}}</td>
+            <th scope="row">{{ user.nombre }}</th>
+            <td>{{ user.apellido }}</td>
+            <td>{{ user.cedula }}</td>
+            <td>{{ user.direccion }}</td>
+            <td>{{ user.correo }}</td>
+            <td>{{ user.telefono }}</td>
+            <td>{{ user.fecha_contratacion }}</td>
             <td class="td-icons">
-              <a  type="button" data-bs-toggle="modal" data-bs-target="#modalFormUser1"
-              data-toggle="tooltip" data-placement="bottom" title="Editar Empleado">
-              <i class="bi bi-pencil-square blue-color"></i></a>
-              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks" data-toggle="tooltip"
-                data-placement="bottom" title="Ver Tareas">
-              <i class="bi bi-eye celeste-color"></i></a>
-              <a (click)="delete(user)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Empleado">
-                <i class="bi bi-trash red-color"></i></a>
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modalFormUser1"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Editar Empleado"
+              >
+                <i class="bi bi-pencil-square blue-color"></i
+              ></a>
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modalTasks"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Ver Tareas"
+              >
+                <i class="bi bi-eye celeste-color"></i
+              ></a>
+              <a
+                (click)="delete(user)"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Eliminar Empleado"
+              >
+                <i class="bi bi-trash red-color"></i
+              ></a>
             </td>
           </tr>
         </tbody>
@@ -57,117 +83,213 @@
   </div>
 </div>
 
-<div class="modal fade" id="modalFormUser" tabindex="-1" aria-labelledby="modalFormUser" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalFormUser"
+  tabindex="-1"
+  aria-labelledby="modalFormUser"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5">Nuevo Empleado</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <label for="">Nombre</label>
-          <input type="text" [(ngModel)]="selectedUsers.nombre" nombre="nombre" placeholder="Nombre"
-            class="form-control">
+          <input
+            type="text"
+            [(ngModel)]="selectedUsers.nombre"
+            nombre="nombre"
+            placeholder="Nombre"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Apellido</label>
-          <input type="text" [(ngModel)]="selectedUsers.apellido" apellido="apellido" placeholder="Apellido"
-            class="form-control">
+          <input
+            type="text"
+            [(ngModel)]="selectedUsers.apellido"
+            apellido="apellido"
+            placeholder="Apellido"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Cedula</label>
-          <input type="numbers" [(ngModel)]="selectedUsers.cedula" cedula="cedula" placeholder="Cedula"
-          class="form-control">
+          <input
+            type="numbers"
+            [(ngModel)]="selectedUsers.cedula"
+            cedula="cedula"
+            placeholder="Cedula"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Direccion</label>
-          <textarea class="form-control" [(ngModel)]="selectedUsers.direccion" rows="3"></textarea>
+          <textarea
+            class="form-control"
+            [(ngModel)]="selectedUsers.direccion"
+            rows="3"
+          ></textarea>
         </div>
         <div class="form-group">
           <label for="">Correo Electronico</label>
-          <input type="text" [(ngModel)]="selectedUsers.correoElectronico" correoElectronico="correoElectronico" placeholder="CorreoElectronico"
-            class="form-control">
+          <input
+            type="text"
+            [(ngModel)]="selectedUsers.correo"
+            correoElectronico="correoElectronico"
+            placeholder="CorreoElectronico"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Telefono</label>
-          <input type="numbers" [(ngModel)]="selectedUsers.telefono" telefono="telefono" placeholder="Telefono"
-            class="form-control">
+          <input
+            type="numbers"
+            [(ngModel)]="selectedUsers.telefono"
+            telefono="telefono"
+            placeholder="Telefono"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Fecha de Contratacion</label>
-          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedUsers.fechaContratacion"
-            ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="selectedUsers.fecha_contratacion"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            (focus)="d.toggle()"
+            [autoClose]="'outside'"
+          />
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"id="btnCerrar" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="btnCerrar"
+          data-bs-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="addOrEdit()">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="modalFormUser1" tabindex="-1" aria-labelledby="modalFormUser1" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalFormUser1"
+  tabindex="-1"
+  aria-labelledby="modalFormUser1"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5">Editar Empleado</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <label for="">Nombre</label>
-          <input type="text" [(ngModel)]="selectedUsers.nombre" nombre="nombre" placeholder="Nombre"
-            class="form-control">
+          <input
+            type="text"
+            [(ngModel)]="selectedUsers.nombre"
+            nombre="nombre"
+            placeholder="Nombre"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Apellido</label>
-          <input type="text" [(ngModel)]="selectedUsers.apellido" apellido="apellido" placeholder="Apellido"
-            class="form-control">
+          <input
+            type="text"
+            [(ngModel)]="selectedUsers.apellido"
+            apellido="apellido"
+            placeholder="Apellido"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Cedula</label>
-          <input type="numbers" [(ngModel)]="selectedUsers.cedula" cedula="cedula" placeholder="Cedula"
-          class="form-control">
+          <input
+            type="numbers"
+            [(ngModel)]="selectedUsers.cedula"
+            cedula="cedula"
+            placeholder="Cedula"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Direccion</label>
-          <textarea class="form-control" [(ngModel)]="selectedUsers.direccion" rows="3"></textarea>
+          <textarea
+            class="form-control"
+            [(ngModel)]="selectedUsers.direccion"
+            rows="3"
+          ></textarea>
         </div>
         <div class="form-group">
           <label for="">Correo Electronico</label>
-          <input type="text" [(ngModel)]="selectedUsers.correoElectronico" correoElectronico="correoElectronico" placeholder="CorreoElectronico"
-            class="form-control">
+          <input
+            type="text"
+            [(ngModel)]="selectedUsers.correo"
+            correoElectronico="correoElectronico"
+            placeholder="CorreoElectronico"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Telefono</label>
-          <input type="numbers" [(ngModel)]="selectedUsers.telefono" telefono="telefono" placeholder="Telefono"
-            class="form-control">
+          <input
+            type="numbers"
+            [(ngModel)]="selectedUsers.telefono"
+            telefono="telefono"
+            placeholder="Telefono"
+            class="form-control"
+          />
         </div>
         <div class="form-group">
           <label for="">Fecha de Contratacion</label>
-          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedUsers.fechaContratacion"
-            ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="selectedUsers.fecha_contratacion"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            (focus)="d.toggle()"
+            [autoClose]="'outside'"
+          />
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="addOrEdit()">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
