@@ -1,6 +1,5 @@
 import { Component,ViewChild, ElementRef, TemplateRef, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Users } from '../models/users';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';

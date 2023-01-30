@@ -26,17 +26,6 @@ export class LoginComponent {
 
   login() {
     if (this.username != undefined && this.password != undefined) {
-      // this.http.get('http://127.0.0.1:8080/login/'+this.username+'/'+this.password).subscribe((data) => {
-      //   if (data.confirmado == 'si') {
-      //     this.userService.storeUserData('username', this.username);
-      //     this.userService.storeUserData('isAdmin', 'si');
-      //     this.errorValidateLogin = false;
-      //     this._router.navigate(['projects']);
-      //   } else {
-      //     this.errorValidateLogin = true;
-      //   }
-      // })
-
       this.http
         .get(`http://localhost:8000/login/${this.username}/${this.password}`)
         .subscribe((data: any) => {

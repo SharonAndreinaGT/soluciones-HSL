@@ -34,6 +34,8 @@ export class ProjectsComponent implements OnInit {
 
   isAdmin() {
     let userAdmin = this.userService.getValue('isAdmin');
+    console.log(userAdmin);
+    
     if (userAdmin == 'si') {
       this.isAdminUser = true;
     } else if (userAdmin == 'no') {

@@ -17,7 +17,6 @@ export class UserService {
 
   clearData() {
     localStorage.clear();
-
   }
 
 }

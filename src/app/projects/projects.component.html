@@ -12,13 +12,8 @@
       <label for="" class="label-title">Proyectos</label>
     </div>
     <div class="col-6">
-      <button
-        type="button"
-        class="btn btn-primary add-btn"
-        data-bs-toggle="modal"
-        data-bs-target="#modalFormProject"
-        *ngIf="isAdminUser"
-      >
+      <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#modalFormProject"
+        *ngIf="isAdminUser">
         Agregar Proyecto
       </button>
     </div>
@@ -42,51 +37,19 @@
             <td>{{ project.denominacion_comercial }}</td>
             <td>{{ project.estado_actual }}</td>
             <td class="td-icons">
-              <a
-                (click)="openForEdit(project)"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#modalFormProject"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Editar Proyecto"
-                *ngIf="isAdminUser"
-              >
-                <i class="bi bi-pencil-square blue-color"></i
-              ></a>
-              <a
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#modalTasks"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Ver Tareas"
-                (click)="verTareas(project)"
-              >
-                <i class="bi bi-eye celeste-color"></i
-              ></a>
-              <a
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#modalTasks1"
-                data-toggle="tooltip"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Crear Tarea"
-                (click)="openForEdit(project)"
-                *ngIf="isAdminUser"
-              >
-                <i class="bi bi-file-earmark-plus green-color"></i
-              ></a>
-              <a
-                (click)="delete(project)"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Eliminar Proyecto"
-                *ngIf="isAdminUser"
-              >
-                <i class="bi bi-trash red-color"></i
-              ></a>
+              <a (click)="openForEdit(project)" type="button" data-bs-toggle="modal" data-bs-target="#modalFormProject"
+                data-toggle="tooltip" data-placement="bottom" title="Editar Proyecto" *ngIf="isAdminUser">
+                <i class="bi bi-pencil-square blue-color"></i></a>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasksView" data-toggle="tooltip"
+                data-placement="bottom" title="Ver Tareas" (click)="verTareas(project)">
+                <i class="bi bi-eye celeste-color"></i></a>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks1" data-toggle="tooltip"
+                data-toggle="tooltip" data-placement="bottom" title="Crear Tarea" (click)="openForEdit(project)"
+                *ngIf="isAdminUser">
+                <i class="bi bi-file-earmark-plus green-color"></i></a>
+              <a (click)="delete(project)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Proyecto"
+                *ngIf="isAdminUser">
+                <i class="bi bi-trash red-color"></i></a>
             </td>
           </tr>
         </tbody>
@@ -97,225 +60,128 @@
 
 <!-- MODAL PROJECTS -->
 
-<div
-  class="modal fade"
-  id="modalFormProject"
-  tabindex="-1"
-  aria-labelledby="modalFormProject"
-  aria-hidden="true"
->
+<div class="modal fade" id="modalFormProject" tabindex="-1" aria-labelledby="modalFormProject" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5">Agregar/Actualizar Proyecto</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <div class="form-group">
-            <span class="align-baseline"
-              ><label for="">Nombre en clave</label></span
-            >
-            <input
-              type="text"
-              [(ngModel)]="selectedProject.nombre"
-              placeholder="Nombre en clave"
-              class="form-control"
-            />
+            <span class="align-baseline"><label for="">Nombre en clave</label></span>
+            <input type="text" [(ngModel)]="selectedProject.nombre" placeholder="Nombre en clave"
+              class="form-control" />
           </div>
           <div class="form-group">
             <label for="">Denominacion comercial</label>
-            <input
-              type="text"
-              [(ngModel)]="selectedProject.denominacion_comercial"
-              placeholder="Denominacion comercial"
-              class="form-control"
-            />
+            <input type="text" [(ngModel)]="selectedProject.denominacion_comercial" placeholder="Denominacion comercial"
+              class="form-control" />
           </div>
           <div class="form-group">
             <label for="">Estado actual</label>
-            <input
-              type="text"
-              [(ngModel)]="selectedProject.estado_actual"
-              placeholder="Estado actual"
-              class="form-control"
-            />
+            <input type="text" [(ngModel)]="selectedProject.estado_actual" placeholder="Estado actual"
+              class="form-control" />
           </div>
         </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            id="btnCerrar"
-            data-bs-dismiss="modal"
-          >
-            Cerrar
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="addOrEdit()"
-            data-bs-dismiss="modal"
-          >
-            Guardar
-          </button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="addOrEdit()" data-bs-dismiss="modal">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- MODAL TASKS VER TAREAS -->
 
-  <div
-    class="modal fade"
-    id="modalTasks"
-    tabindex="-1"
-    aria-labelledby="modalTasks"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5">Tareas</h1>
-        </div>
+<!-- MODAL TASKS VER TAREAS -->
 
-        <div class="modal-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Duracion Estimada</th>
-                <th scope="col">Duracion Real</th>
-                <th scope="col">Fecha Estimada</th>
-                <th scope="col">Fecha Real</th>
-                <th scope="col">Tipo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let task of tasks">
-                <td>{{ task.descripcion }}</td>
-                <td>{{ task.duracion_estimada }}</td>
-                <td>{{ task.duracion_real }}</td>
-                <td>{{ task.fecha_estimada }}</td>
-                <td>{{ task.fecha_real }}</td>
-                <td>{{ task.tipo }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            id="btnCerrar"
-            data-bs-dismiss="modal"
-          >
-            Cerrar
-          </button>
-        </div>
+<div class="modal fade" id="modalTasksView" tabindex="-1" aria-labelledby="modalTasksView" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Tareas</h1>
+      </div>
+
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Duracion Estimada</th>
+              <th scope="col">Duracion Real</th>
+              <th scope="col">Fecha Estimada</th>
+              <th scope="col">Fecha Real</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of tasks">
+              <td>{{ task.descripcion }}</td>
+              <td>{{ task.duracion_estimada }}</td>
+              <td>{{ task.duracion_real }}</td>
+              <td>{{ task.fecha_estimada }}</td>
+              <td>{{ task.fecha_real }}</td>
+              <td>{{ task.tipo }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
+          Cerrar
+        </button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- MODAL TASKS1 CREAR TAREAS -->
+<!-- MODAL TASKS1 CREAR TAREAS -->
 
-  <div
-    class="modal fade"
-    id="modalTasks1"
-    tabindex="-1"
-    aria-labelledby="modalTasks1"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5">Tareas</h1>
+<div class="modal fade" id="modalTasks1" tabindex="-1" aria-labelledby="modalTasks1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Tareas</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Descripcion</label></span>
+          <input type="text" [(ngModel)]="selectedTarea.descripcion" placeholder="Descripcion" class="form-control" />
         </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <span class="align-baseline"
-              ><label for="">Descripcion</label></span
-            >
-            <input
-              type="text"
-              [(ngModel)]="selectedTarea.descripcion"
-              placeholder="Descripcion"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <span class="align-baseline"><label for="">Tipo</label></span>
-            <input
-              type="text"
-              [(ngModel)]="selectedTarea.tipo"
-              placeholder="Tipo"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <span class="align-baseline"
-              ><label for="">Fecha de Inicio Estimada</label></span
-            >
-            <input
-              type="text"
-              [(ngModel)]="selectedTarea.fecha_estimada"
-              placeholder="AAAA-MM-DD"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <span class="align-baseline"
-              ><label for="">Fecha de Inicio Real</label></span
-            >
-            <input
-              type="text"
-              [(ngModel)]="selectedTarea.fecha_real"
-              placeholder="AAAA-MM-DD"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Duracion Estimada</label>
-            <input
-              type="text"
-              [(ngModel)]="selectedTarea.duracion_estimada"
-              placeholder="HH:MM"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Duracion Real</label>
-            <input
-              type="text"
-              [(ngModel)]="selectedTarea.duracion_real"
-              placeholder="HH:MM"
-              class="form-control"
-            />
-          </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Tipo</label></span>
+          <input type="text" [(ngModel)]="selectedTarea.tipo" placeholder="Tipo" class="form-control" />
         </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            id="btnCerrar"
-            data-bs-dismiss="modal"
-          >
-            Cerrar
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="crearTarea()"
-            data-bs-dismiss="modal"
-          >
-            Guardar
-          </button>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Fecha de Inicio Estimada</label></span>
+          <input type="text" [(ngModel)]="selectedTarea.fecha_estimada" placeholder="AAAA-MM-DD" class="form-control" />
         </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Fecha de Inicio Real</label></span>
+          <input type="text" [(ngModel)]="selectedTarea.fecha_real" placeholder="AAAA-MM-DD" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="">Duracion Estimada</label>
+          <input type="text" [(ngModel)]="selectedTarea.duracion_estimada" placeholder="HH:MM" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="">Duracion Real</label>
+          <input type="text" [(ngModel)]="selectedTarea.duracion_real" placeholder="HH:MM" class="form-control" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="crearTarea()" data-bs-dismiss="modal">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
