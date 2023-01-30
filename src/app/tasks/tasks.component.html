@@ -53,8 +53,6 @@
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalDocumentos" data-toggle="tooltip"
                 data-toggle="tooltip" data-placement="bottom" title="Crear Documento" (click)="openForEdit(tasks)">
                 <i class="bi bi-file-earmark-plus green-color"></i></a>
-              <a (click)="delete(tasks)" data-toggle="tooltip" data-placement="bottom" title="Eliminar Tarea">
-                <i class="bi bi-trash red-color"></i></a>
             </td>
           </tr>
         </tbody>
@@ -173,10 +171,6 @@
         <h1 class="modal-title fs-5">Crear Documento</h1>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <span class="align-baseline"><label for="">Codigo</label></span>
-          <input type="text" [(ngModel)]="selectedDocumentos.codigo" placeholder="Descripcion" class="form-control" />
-        </div>
         <div class="form-group">
           <span class="align-baseline"><label for="">Documento de especificacion</label></span>
           <input type="text" [(ngModel)]="selectedDocumentos.documento_especificacion" placeholder="Documento de especificacion"

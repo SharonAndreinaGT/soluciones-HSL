@@ -8,3 +8,9 @@
     display: block;
     cursor: pointer;
 }
+
+.menu-button{
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+}

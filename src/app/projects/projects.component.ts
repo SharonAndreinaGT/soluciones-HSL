@@ -89,17 +89,4 @@ export class ProjectsComponent implements OnInit {
         this.tasks = data.tareas;
       });
   }
-
-  delete(project: Projects) {
-    if (confirm('Seguro que deseas eliminar este proyecto?')) {
-      this.http
-        .delete<any>('http://localhost:8000/borrar/proyecto/' + project.codigo)
-        .subscribe((data) => {
-          this.projects = this.projects.filter(
-            (x) => x.codigo !== project.codigo
-          );
-          this.selectedProject = new Projects();
-        });
-    }
-  }
 }

@@ -69,17 +69,19 @@
                 data-bs-target="#asignarProyectoModal"
                 (click)="traerProyectos(user)"
               >
-              <i class="bi bi-file-ppt celeste-color"></i>
+                <i class="bi bi-file-ppt celeste-color"></i>
               </a>
               <a
-                (click)="delete(user)"
+                type="button"
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="Eliminar Empleado"
-                *ngIf="isAdminUser"
+                title="Asignar Proyecto"
+                data-bs-toggle="modal"
+                data-bs-target="#asignarTareaModal"
+                (click)="traerTareas(user)"
               >
-                <i class="bi bi-trash red-color"></i
-              ></a>
+                <i class="bi bi-journal-text celeste-color"></i>
+              </a>
             </td>
           </tr>
         </tbody>
@@ -287,7 +289,12 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cerrar
         </button>
-        <button type="button" class="btn btn-primary" (click)="addOrEdit()" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="addOrEdit()"
+          data-bs-dismiss="modal"
+        >
           Guardar
         </button>
       </div>
@@ -296,7 +303,6 @@
 </div>
 
 <!-- MODAL ASIGNAR PROYECTO -->
-
 
 <div
   class="modal fade"
@@ -318,9 +324,15 @@
       </div>
       <div class="modal-body">
         <div class="form-check" *ngFor="let project of projects">
-          <input (change)="onItemChange($event)" class="form-check-input" type="radio" name="proyecto" id="{{project.codigo}}">
-          <label class="form-check-label" for="{{project.codigo}}">
-            {{project.codigo}} - {{project.nombre}}
+          <input
+            (change)="onItemChange($event)"
+            class="form-check-input"
+            type="radio"
+            name="proyecto"
+            id="{{ project.codigo }}"
+          />
+          <label class="form-check-label" for="{{ project.codigo }}">
+            {{ project.codigo }} - {{ project.nombre }}
           </label>
         </div>
       </div>
@@ -333,7 +345,62 @@
         >
           Cerrar
         </button>
-        <button type="button" class="btn btn-primary" (click)="asignarProyecto()">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="asignarProyecto()"
+        >
+          Asignar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  MODAL ASIGNAR TAREA  -->
+
+<div
+  class="modal fade"
+  id="asignarTareaModal"
+  tabindex="-1"
+  aria-labelledby="asignarTareaModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Asignar Tarea</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check" *ngFor="let task of tasks">
+          <input
+            (change)="onItemChange($event)"
+            class="form-check-input"
+            type="radio"
+            name="tarea"
+            id="{{ task.codigo }}"
+          />
+          <label class="form-check-label" for="{{ task.codigo }}">
+            {{ task.codigo }} - {{ task.descripcion }}
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="btnCerrar"
+          data-bs-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="asignarTarea()">
           Asignar
         </button>
       </div>

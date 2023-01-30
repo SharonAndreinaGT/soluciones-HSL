@@ -76,11 +76,4 @@ export class TasksComponent {
       this.documentos = data.documentos;
     })
   };
-
-  delete(tasks: Tasks) {
-    if (confirm('Seguro que deseas eliminar esta tarea?')) {
-      this.tasks = this.tasks.filter((x) => x.id !== this.selectedTasks.id);
-      this.selectedTasks = new Tasks();
-    }
-  }
 }
