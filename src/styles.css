@@ -1,5 +1,9 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+body {
+  font-family: 'Poppins' !important;
+}
+
 mat-sidenav {
   margin: 16px;
   width: 200px;
@@ -167,3 +171,11 @@ body {
   padding: 25px;
   margin-top: 80px;
 }
+
+.title {
+  font-family: 'Poppins';
+  font-weight: 500;
+  position: relative;
+  top: -60px;
+}
+

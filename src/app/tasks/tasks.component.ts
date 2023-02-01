@@ -18,6 +18,7 @@ export class TasksComponent {
     selectedTasks: Tasks = new Tasks();
     selectedDocumentos: Documentos = new Documentos();
     documentos: Documentos[];
+   
     tasks: Tasks[];
     isAdminUser: boolean = false;
 

@@ -8,14 +8,10 @@
 
 <div class="container-table">
   <div class="row">
-    <div class="col-6">
-      <label for="" class="label-title">Tareas</label>
+    <div class="col-11 text-center">
+      <label for="" class="fs-1 title">Tareas</label>
     </div>
-    <div class="col-6">
-      <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal"
-        data-bs-target="#modalFormTasks">Crear Tarea
-      </button>
-    </div>
+
   </div>
   <div class="row">
     <div class="col-12">
@@ -53,6 +49,9 @@
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalDocumentos" data-toggle="tooltip"
                 data-toggle="tooltip" data-placement="bottom" title="Crear Documento" (click)="openForEdit(tasks)">
                 <i class="bi bi-file-earmark-plus green-color"></i></a>
+                <a type="button" data-bs-toggle="modal" data-bs-target="#modalVersion" data-toggle="tooltip"
+                data-toggle="tooltip" data-placement="bottom" title="Version del documento" (click)="openForEdit(tasks)">
+                <i class="bi bi-files"></i></a>         
             </td>
           </tr>
         </tbody>
@@ -113,6 +112,7 @@
 </div>
 
 <!-- MODAL TASKS2 EDITAR TAREAS -->
+
 <div class="modal fade" id="modalFormTasks1" tabindex="-1" aria-labelledby="modalFormTasks1" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -204,6 +204,8 @@
   </div>
 </div>
 
+<!-- VER DOCUMENTOS -->
+
 <div class="modal fade" id="modalDocumentosView" tabindex="-1" aria-labelledby="modalDocumentosView" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -239,6 +241,48 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
           Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CREAR VERSION DEL DOCUMENTO -->
+
+<div class="modal fade" id="modalVersion" tabindex="-1" aria-labelledby="modalVersion" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Version del documento</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Documento de especificacion</label></span>
+          <input type="text" [(ngModel)]="selectedDocumentos.documento_especificacion" placeholder="Documento de especificacion"
+            class="form-control" />
+        </div>
+        <div class="form-group">
+          <span class="align-baseline"><label for="">Codigo Fuente</label></span>
+          <input type="text" [(ngModel)]="selectedDocumentos.codigo_fuente" placeholder="Codigo Fuente"
+            class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="">Descripcion</label>
+          <input type="text" [(ngModel)]="selectedDocumentos.descripcion" placeholder="Descripcion"
+            class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="">Tipo</label>
+          <input type="text" [(ngModel)]="selectedDocumentos.tipo" placeholder="Tipo"
+            class="form-control" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="crearDocumento()" data-bs-dismiss="modal">
+          Guardar
         </button>
       </div>
     </div>

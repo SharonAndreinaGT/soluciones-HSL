@@ -8,10 +8,10 @@
 
 <div class="container-table">
   <div class="row">
-    <div class="col-6">
-      <label for="" class="label-title">Proyectos</label>
+    <div class="col-11 text-center">
+      <label for="" class="fs-1 title">Proyectos</label>
     </div>
-    <div class="col-6">
+    <div class="col-1">
       <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#modalFormProject"
         *ngIf="isAdminUser">
         Agregar Proyecto
@@ -95,49 +95,6 @@
   </div>
 </div>
 
-
-<!-- MODAL TASKS VER TAREAS -->
-
-<div class="modal fade" id="modalTasksView" tabindex="-1" aria-labelledby="modalTasksView" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5">Tareas</h1>
-      </div>
-
-      <div class="modal-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Duracion Estimada</th>
-              <th scope="col">Duracion Real</th>
-              <th scope="col">Fecha Estimada</th>
-              <th scope="col">Fecha Real</th>
-              <th scope="col">Tipo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let task of tasks">
-              <td>{{ task.descripcion }}</td>
-              <td>{{ task.duracion_estimada }}</td>
-              <td>{{ task.duracion_real }}</td>
-              <td>{{ task.fecha_estimada }}</td>
-              <td>{{ task.fecha_real }}</td>
-              <td>{{ task.tipo }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- MODAL TASKS1 CREAR TAREAS -->
 
 <div class="modal fade" id="modalTasks1" tabindex="-1" aria-labelledby="modalTasks1" aria-hidden="true">
@@ -183,3 +140,47 @@
     </div>
   </div>
 </div>
+
+
+<!-- MODAL TASKS VER TAREAS -->
+
+<div class="modal fade" id="modalTasksView" tabindex="-1" aria-labelledby="modalTasksView" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Tareas</h1>
+      </div>
+
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Duracion Estimada</th>
+              <th scope="col">Duracion Real</th>
+              <th scope="col">Fecha Estimada</th>
+              <th scope="col">Fecha Real</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of tasks">
+              <td>{{ task.descripcion }}</td>
+              <td>{{ task.duracion_estimada }}</td>
+              <td>{{ task.duracion_real }}</td>
+              <td>{{ task.fecha_estimada }}</td>
+              <td>{{ task.fecha_real }}</td>
+              <td>{{ task.tipo }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
