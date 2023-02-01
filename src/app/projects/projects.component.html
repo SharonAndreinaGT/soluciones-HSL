@@ -14,6 +14,11 @@
       <label for="" class="fs-1 title">Proyectos</label>
     </div>
     <div class="col-1">
+      <button type="button" class="btn btn-primary" (click)="downloadPDF()">
+          Descargar PDF
+      </button>
+  </div>
+    <div class="col-1">
       <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#modalFormProject"
         *ngIf="isAdminUser">
         Agregar Proyecto
