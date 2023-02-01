@@ -1,3 +1,5 @@
+<span class="role-text">{{roleText}}</span>
+
 <div class="row">
   <div class="col-12">
     <div class="sidebar-menu-container">
@@ -41,16 +43,16 @@
             <td>{{ tasks.codigo_proyecto }}</td>
             <td class="td-icons">
               <a (click)="openForEdit(tasks)" type="button" data-bs-toggle="modal" data-bs-target="#modalFormTasks1"
-                data-toggle="tooltip" data-placement="bottom" title="Editar Tarea">
+                data-toggle="tooltip" data-placement="bottom" title="Editar Tarea" *ngIf="isAdminUser">
                 <i class="bi bi-pencil-square blue-color"></i></a>
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalDocumentosView" data-toggle="tooltip"
                 data-placement="bottom" title="Ver Documentos" (click)="verDocumentos(tasks)">
                 <i class="bi bi-eye celeste-color"></i></a>
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalDocumentos" data-toggle="tooltip"
-                data-toggle="tooltip" data-placement="bottom" title="Crear Documento" (click)="openForEdit(tasks)">
+                data-toggle="tooltip" data-placement="bottom" title="Crear Documento" (click)="openForEdit(tasks)" *ngIf="isAdminUser">
                 <i class="bi bi-file-earmark-plus green-color"></i></a>
                 <a type="button" data-bs-toggle="modal" data-bs-target="#modalVersion" data-toggle="tooltip"
-                data-toggle="tooltip" data-placement="bottom" title="Version del documento" (click)="openForEdit(tasks)">
+                data-toggle="tooltip" data-placement="bottom" title="Version del documento" (click)="openForEdit(tasks)" *ngIf="isAdminUser">
                 <i class="bi bi-files"></i></a>   
                 <a type="button" data-bs-toggle="modal" data-bs-target="#modalVersionView" data-toggle="tooltip"
                 data-placement="bottom" title="Ver Documentos" (click)="versionDocumentos(tasks)">
@@ -306,7 +308,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let version of version">
+            <tr *ngFor="let version of versiones">
               <td>{{ version.codigo }}</td>
               <td>{{ version.descripcion }}</td>
               <td>{{ version.fecha }}</td>

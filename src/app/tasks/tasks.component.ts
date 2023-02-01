@@ -21,28 +21,29 @@ export class TasksComponent {
     selectedDocumentos: Documentos = new Documentos();
     selectedVersion: Version = new Version();
     documentos: Documentos[];
-    version: Version[];
+    versiones: Version[];
     tasks: Tasks[];
     isAdminUser: boolean = false;
+    roleText: string = '';
 
     ngOnInit() {
       this.isAdmin();
       this.http.get<any>('http://localhost:8000/tareas').subscribe(data => {
-        this.tasks = data.tareas;
-        console.log(data);
-        
+        this.tasks = data.tareas;       
       })
     }
 
     isAdmin() {
       let userAdmin = this.userService.getValue('isAdmin');
-      console.log(userAdmin);
       
       if (userAdmin == 'si') {
         this.isAdminUser = true;
+        this.roleText = 'Administrador';
       } else if (userAdmin == 'no') {
         this.isAdminUser = false;
+        this.roleText = 'Usuario';
       } else {
+        this.roleText = '';
         this._router.navigate(['login']);
       }
     }
@@ -78,7 +79,7 @@ export class TasksComponent {
   
   versionDocumentos(tasks: Tasks){
     this.http.get<any>('http://localhost:8000/docs/'+ tasks.codigo+'/versiones').subscribe((data) => {
-    this.version = data.version;
+    this.versiones = data.versiones;
     console.log(data);
     
     })

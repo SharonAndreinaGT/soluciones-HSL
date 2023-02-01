@@ -179,3 +179,11 @@ body {
   top: -60px;
 }
 
+.role-text {
+  position: absolute;
+  right: 40px;
+  font-style: italic;
+  top: 25px;
+  color: white;
+}
+

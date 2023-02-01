@@ -24,6 +24,7 @@ export class ProjectsComponent implements OnInit {
   tasks: Tasks[];
 
   isAdminUser: boolean = false;
+  roleText: string = '';
 
   ngOnInit() {
     this.isAdmin();
@@ -34,13 +35,15 @@ export class ProjectsComponent implements OnInit {
 
   isAdmin() {
     let userAdmin = this.userService.getValue('isAdmin');
-    console.log(userAdmin);
     
     if (userAdmin == 'si') {
       this.isAdminUser = true;
+      this.roleText = 'Administrador';
     } else if (userAdmin == 'no') {
       this.isAdminUser = false;
+      this.roleText = 'Usuario';
     } else {
+      this.roleText = '';
       this._router.navigate(['login']);
     }
   }
