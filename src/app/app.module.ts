@@ -29,7 +29,6 @@ import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { UsersComponent } from './users/users.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReporteComponent } from './reporte/reporte.component';
 
 
 @NgModule({
@@ -45,7 +44,6 @@ import { ReporteComponent } from './reporte/reporte.component';
       { path: 'users', component: UsersComponent },
       { path: 'tasks', component: TasksComponent },
       { path: 'estadisticas', component: EstadisticasComponent },
-      { path: 'reporte', component: ReporteComponent },
     ]),
 
     BrowserAnimationsModule,
@@ -71,7 +69,6 @@ import { ReporteComponent } from './reporte/reporte.component';
     UsersComponent,
     TasksComponent,
     EstadisticasComponent,
-    ReporteComponent,
   ],
   bootstrap: [
     AppComponent
