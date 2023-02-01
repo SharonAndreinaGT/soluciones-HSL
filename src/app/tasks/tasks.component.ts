@@ -5,6 +5,8 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';  
 import { Projects } from '../models/projects';
 import { Documentos } from '../models/documentos';
+import { Version } from '../models/version';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-tasks',
@@ -17,8 +19,9 @@ export class TasksComponent {
 
     selectedTasks: Tasks = new Tasks();
     selectedDocumentos: Documentos = new Documentos();
+    selectedVersion: Version = new Version();
     documentos: Documentos[];
-   
+    version: Version[];
     tasks: Tasks[];
     isAdminUser: boolean = false;
 
@@ -64,6 +67,24 @@ export class TasksComponent {
     this.selectedTasks = tasks;
   }
 
+  crearVersion(){
+    this.selectedVersion.codigo_documentos = this.selectedVersion.codigo
+    this.http.post<any>('http://localhost:8000/docs/'+this.selectedTasks.codigo +'/crear/version', this.selectedVersion).subscribe((data) => {
+    this.selectedVersion = new Version();
+    console.log(data);
+    
+    });
+  }
+  
+  versionDocumentos(tasks: Tasks){
+    this.http.get<any>('http://localhost:8000/docs/'+ tasks.codigo+'/versiones').subscribe((data) => {
+    this.version = data.version;
+    console.log(data);
+    
+    })
+
+  }
+
   crearDocumento(){
     this.selectedDocumentos.codigo_tareas = this.selectedTasks.codigo
     this.http.post<any>('http://localhost:8000/tarea/'+ this.selectedTasks.codigo +'/docs', this.selectedDocumentos).subscribe((data) => {
@@ -77,4 +98,7 @@ export class TasksComponent {
       this.documentos = data.documentos;
     })
   };
+
+
+
 }

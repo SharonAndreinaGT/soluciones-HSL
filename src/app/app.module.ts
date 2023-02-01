@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { LoginComponent } from './login/login.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectsComponent } from './projects/projects.component';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
@@ -42,6 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       { path: 'projects', component: ProjectsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'tasks', component: TasksComponent },
+      { path: 'estadisticas', component: EstadisticasComponent },
     ]),
 
     BrowserAnimationsModule,
@@ -66,6 +68,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SidebarMenuComponent,
     UsersComponent,
     TasksComponent,
+    EstadisticasComponent,
   ],
   bootstrap: [
     AppComponent
