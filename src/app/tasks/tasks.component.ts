@@ -7,6 +7,7 @@ import { Projects } from '../models/projects';
 import { Documentos } from '../models/documentos';
 import { Version } from '../models/version';
 import { ThisReceiver } from '@angular/compiler';
+import { Users } from '../models/users';
 
 @Component({
   selector: 'app-tasks',
@@ -22,6 +23,7 @@ export class TasksComponent {
     selectedVersion: Version = new Version();
     documentos: Documentos[];
     versiones: Version[];
+    users: Users[];
     tasks: Tasks[];
     isAdminUser: boolean = false;
     roleText: string = '';
@@ -100,6 +102,13 @@ export class TasksComponent {
     })
   };
 
+  empleadoTareas(tasks: Tasks){
+    this.http.get<any>('http://localhost:8000/tarea/'+ tasks.codigo +'/empleados').subscribe((data) => {
+      this.users = data.empleados;
+      console.log(data);
+      
+    })
 
+  }
 
 }

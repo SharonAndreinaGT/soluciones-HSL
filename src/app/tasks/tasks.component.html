@@ -51,12 +51,15 @@
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalDocumentos" data-toggle="tooltip"
                 data-toggle="tooltip" data-placement="bottom" title="Crear Documento" (click)="openForEdit(tasks)" *ngIf="isAdminUser">
                 <i class="bi bi-file-earmark-plus green-color"></i></a>
-                <a type="button" data-bs-toggle="modal" data-bs-target="#modalVersion" data-toggle="tooltip"
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalVersion" data-toggle="tooltip"
                 data-toggle="tooltip" data-placement="bottom" title="Version del documento" (click)="openForEdit(tasks)" *ngIf="isAdminUser">
                 <i class="bi bi-files"></i></a>   
-                <a type="button" data-bs-toggle="modal" data-bs-target="#modalVersionView" data-toggle="tooltip"
-                data-placement="bottom" title="Ver Documentos" (click)="versionDocumentos(tasks)">
-                <i class="bi bi-eye red-color"></i></a>      
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalVersionView" data-toggle="tooltip"
+                data-placement="bottom" title="Versiones de Documentos" (click)="versionDocumentos(tasks)">
+                <i class="bi bi-layout-text-sidebar-reverse"></i></a>      
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalUsersView" data-toggle="tooltip"
+                data-placement="bottom" title="Empleados/Tareas" (click)="empleadoTareas(tasks)">
+                <i class="bi bi-person-square"></i></a>    
             </td>
           </tr>
         </tbody>
@@ -312,6 +315,50 @@
               <td>{{ version.codigo }}</td>
               <td>{{ version.descripcion }}</td>
               <td>{{ version.fecha }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PARA VER LOS EMPLEADOS DE UNA TAREA -->
+
+<div class="modal fade" id="modalUsersView" tabindex="-1" aria-labelledby="modalUsersView" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Empleados asignados de la tarea</h1>
+      </div>
+
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Cedula</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Fecha de contratacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.nombre }}</td>
+              <td>{{ user.apellido }}</td>
+              <td>{{ user.cedula }}</td>
+              <td>{{ user.direccion }}</td>
+              <td>{{ user.correo }}</td>
+              <td>{{ user.telefono }}</td>
+              <td>{{ user.fecha_contratacion }}</td>
             </tr>
           </tbody>
         </table>
