@@ -42,13 +42,16 @@
               <a (click)="openForEdit(project)" type="button" data-bs-toggle="modal" data-bs-target="#modalFormProject"
                 data-toggle="tooltip" data-placement="bottom" title="Editar Proyecto" *ngIf="isAdminUser">
                 <i class="bi bi-pencil-square blue-color"></i></a>
-              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasksView" data-toggle="tooltip"
-                data-placement="bottom" title="Ver Tareas" (click)="verTareas(project)">
-                <i class="bi bi-eye celeste-color"></i></a>
               <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasks1" data-toggle="tooltip"
                 data-toggle="tooltip" data-placement="bottom" title="Crear Tarea" (click)="openForEdit(project)"
                 *ngIf="isAdminUser">
                 <i class="bi bi-file-earmark-plus green-color"></i></a>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalTasksView" data-toggle="tooltip"
+                data-placement="bottom" title="Ver Tareas" (click)="verTareas(project)">
+                <i class="bi bi-eye celeste-color"></i></a>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#modalUsersView" data-toggle="tooltip"
+                data-placement="bottom" title="Ver Tareas" (click)="empleadoProyecto(project)">
+                <i class="bi bi-person-square"></i></a>
             </td>
           </tr>
         </tbody>
@@ -185,4 +188,48 @@
     </div>
   </div>
 </div>
+
+<!-- Modal PARA VER LOS EMPLEADOS DEL PROYECTO -->
+<div class="modal fade" id="modalUsersView" tabindex="-1" aria-labelledby="modalUsersView" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Empleados</h1>
+      </div>
+
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Cedula</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Fecha de contratacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.nombre }}</td>
+              <td>{{ user.apellido }}</td>
+              <td>{{ user.cedula }}</td>
+              <td>{{ user.direccion }}</td>
+              <td>{{ user.correo }}</td>
+              <td>{{ user.telefono }}</td>
+              <td>{{ user.fecha_contratacion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrar" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 

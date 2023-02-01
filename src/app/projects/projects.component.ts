@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Tasks } from '../models/tasks';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { Users } from '../models/users';
 
 @Component({
   selector: 'app-projects',
@@ -19,10 +20,9 @@ export class ProjectsComponent implements OnInit {
 
   selectedProject: Projects = new Projects();
   selectedTarea: Tasks = new Tasks();
-
   projects: Projects[];
   tasks: Tasks[];
-
+  users: Users[];
   isAdminUser: boolean = false;
   roleText: string = '';
 
@@ -91,5 +91,14 @@ export class ProjectsComponent implements OnInit {
       .subscribe((data) => {
         this.tasks = data.tareas;
       });
+  }
+
+  empleadoProyecto(project: Projects){
+    this.http.get<any>('http://localhost:8000/proyecto/'+ project.codigo +'/empleados')
+    .subscribe((data) => {
+      this.users = data.empleados;
+      console.log(data);
+      
+    });
   }
 }
