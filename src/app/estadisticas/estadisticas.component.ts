@@ -18,6 +18,7 @@ export class EstadisticasComponent {
   cantidadProyectos: number = 0;
   cantidadTareas: number = 0;
   cantidadEmpleados: number = 0;
+  cantidadTotal: number = 0
 
   isAdminUser: boolean = false;
   roleText: string = '';
@@ -35,7 +36,9 @@ export class EstadisticasComponent {
         this.http.get<any>('http://localhost:8000/empleados').subscribe((data) => {
           this.cantidadEmpleados = data.cantidad;
 
-          (document.querySelector('.pie-chart') as HTMLElement).style.background = 'radial-gradient(circle closest-side,transparent 66%,white 0),conic-gradient(#f28e2c 0,#f28e2c '+this.cantidadTareas * 10 +'%,#e15759 0,#e15759 '+this.cantidadEmpleados * 10+'%, #4e79a7 0,#4e79a7 ' + this.cantidadProyectos * 10 + '%)'
+          this.cantidadTotal = this.cantidadEmpleados + this.cantidadProyectos + this.cantidadTareas;
+
+          (document.querySelector('.pie-chart') as HTMLElement).style.background = 'radial-gradient(circle closest-side,transparent 66%,white 0),conic-gradient(#e15759 0,#e15759 '+(this.cantidadEmpleados / this.cantidadTotal) * 100+'%,#f28e2c 0,#f28e2c '+(this.cantidadTareas / this.cantidadTotal) * 100 +'%, #4e79a7 0,#4e79a7 ' + (this.cantidadProyectos / this.cantidadTotal) * 100 + '%)'
         
         });
       })
