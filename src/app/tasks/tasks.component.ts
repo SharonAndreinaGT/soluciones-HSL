@@ -18,6 +18,8 @@ export class TasksComponent {
   constructor(private _router: Router,
     private http: HttpClient, private userService: UserService) { }
 
+  // ARRAYS GENERALES DE LOS COMPONENTES
+
     selectedTasks: Tasks = new Tasks();
     selectedDocumentos: Documentos = new Documentos();
     selectedVersion: Version = new Version();
@@ -28,12 +30,17 @@ export class TasksComponent {
     isAdminUser: boolean = false;
     roleText: string = '';
 
+  // FUNCION PARA TRAER LAS TAREAS DEL BACKEND A TRAVÉS DEL METODO GET
+
     ngOnInit() {
       this.isAdmin();
       this.http.get<any>('http://localhost:8000/tareas').subscribe(data => {
         this.tasks = data.tareas;       
       })
     }
+
+  // FUNCION PARA INICIAR COMO ADMIN O USUARIO
+  // DONDE CUANDO RETORNE isAdmin DEL BACKEND INICIARÁ Y MOSTRARÁ QUE INGRESÓ COMO ADMINISTRADOR
 
     isAdmin() {
       let userAdmin = this.userService.getValue('isAdmin');
@@ -50,6 +57,9 @@ export class TasksComponent {
       }
     }
 
+
+    // FUNCION PARA ABRIR Y EDITAR UNA TAREA QUE INICIA A TRAVÉS DE LA RUTA 
+  // QUE TRAE COMO REPUESTA DEL BACKEND  
   addOrEdit() {
     if (this.selectedTasks.id === 0) {
       this.http.post<any>('http://localhost:8000/proyecto/' + this.selectedTasks.codigo_proyecto +'/crear/tarea', 
@@ -69,6 +79,10 @@ export class TasksComponent {
   openForEdit(tasks: Tasks) {
     this.selectedTasks = tasks;
   }
+
+//A ESTAS FUNCIONES SE LES LLAMA EN LA PARTE DEL COMPONENT.HTML PARA DARLES USO, COMO RESPUESTA QUE,
+//  CUANDO DEN CLICK EN ALGUNO DE LOS BOTONES DONDE SE LLAME ESA FUNCION SE EJECUTE LO QUE ESTÉ DENTRO
+// YA SEA EN UN MODAL PARA LLENAR LOS CAMPOS O SOLO PARA VISUALIZAR
 
   crearVersion(){
     this.selectedVersion.codigo_documentos = this.selectedVersion.codigo
