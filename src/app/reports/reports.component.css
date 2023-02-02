@@ -1,0 +1,40 @@
+.header-report {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.header-report img {
+  width: 200px;
+}
+
+.container-table {
+  margin-top: 0 !important;
+}
+
+.container-each-table {
+  background-color: #0842ad21;
+  margin-bottom: 14px;
+  border-radius: 10px;
+}
+
+.container-btn-export {
+  position: relative;
+}
+
+.btn-generar-reporte{
+  position: absolute;
+  right: 35px;
+  top: 20px;
+}
+
+.title-report{
+  margin-bottom: 10px;
+}
+
+.title-report-verde {
+  background-color: #08ad5021;
+}
+
+.title-report-rosa{
+  background-color: #d973cc21;
+}

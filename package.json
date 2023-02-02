@@ -1,8 +1,8 @@
 {
-  "name": "angular.io-example",
+  "name": "Soluciones HSL",
   "version": "0.0.0",
-  "description": "Example project from an angular.io guide.",
-  "license": "MIT",
+  "description": "Soluciones HSL",
+  "license": "HSL",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

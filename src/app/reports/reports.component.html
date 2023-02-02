@@ -1,0 +1,200 @@
+<span class="role-text">{{roleText}}</span>
+
+<div class="row">
+  <div class="col-12">
+    <div class="sidebar-menu-container">
+      <app-sidebar-menu></app-sidebar-menu>
+    </div>
+  </div>
+</div>
+
+<div class="container-btn-export">
+  <button class="btn btn-primary btn-generar-reporte"(click)="openPDF()">Generar Reporte</button>
+</div>
+
+
+<div class="container-table" id="htmlData">
+  <div class="row">
+    <div class="header-report">
+      <div>
+        <img src="../../assets/img/logo.png" alt="" />
+      </div>
+      <label for="" class="fs-1">Reporte General Soluciones HSL</label>
+    </div>
+  </div>
+
+  <!-- TABLA PROYECTOS -->
+  <div class="container-each-table">
+    <div class="row">
+      <div class="col-12 text-center">
+        <label for="" class="fs-4 title-report">Proyectos</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead class="table-head">
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Denominación Comercial</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            <tr *ngFor="let project of projects">
+              <th scope="row">{{ project.codigo }}</th>
+              <td>{{ project.nombre }}</td>
+              <td>{{ project.denominacion_comercial }}</td>
+              <td>{{ project.estado_actual }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TABLA EMPLEADOS -->
+  <div class="container-each-table title-report-verde">
+    <div class="row">
+      <div class="col-12 text-center">
+        <label for="" class="fs-4 title-report ">Empleados</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead class="table-head">
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Cedula</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Correo Electronico</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Fecha de Contratacion</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            <tr *ngFor="let user of users">
+              <th scope="row">{{ user.nombre }}</th>
+              <td>{{ user.apellido }}</td>
+              <td>{{ user.cedula }}</td>
+              <td>{{ user.direccion }}</td>
+              <td>{{ user.correo }}</td>
+              <td>{{ user.telefono }}</td>
+              <td>{{ user.fecha_contratacion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TABLA TAREAS -->
+  <div class="container-each-table title-report-rosa">
+    <div class="row">
+      <div class="col-12 text-center">
+        <label for="" class="fs-4 title-report">Tareas</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead class="table-head">
+            <tr>
+              <th scope="col">Codigo</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Fecha Estimada</th>
+              <th scope="col">Fecha Real</th>
+              <th scope="col">Duracion Real</th>
+              <th scope="col">Duracion Estimada</th>
+              <th scope="col">Codigo del Proyecto</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            <tr *ngFor="let tasks of tareas">
+              <th scope="row">{{ tasks.codigo }}</th>
+              <td>{{ tasks.descripcion }}</td>
+              <td>{{ tasks.tipo }}</td>
+              <td>{{ tasks.fecha_estimada }}</td>
+              <td>{{ tasks.fecha_real }}</td>
+              <td>{{ tasks.duracion_real }}</td>
+              <td>{{ tasks.duracion_estimada }}</td>
+              <td>{{ tasks.codigo_proyecto }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TABLA DOCUMENTOS -->
+  <div class="container-each-table">
+    <div class="row">
+      <div class="col-12 text-center">
+        <label for="" class="fs-4 title-report">Documentos</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead class="table-head">
+            <tr>
+              <th scope="col">Documento especificacion</th>
+              <th scope="col">Codigo fuente</th>
+              <th scope="col">Codigo</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Codigo tareas</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            <tr *ngFor="let documento of documentos">
+              <td>{{ documento.documento_especificacion }}</td>
+              <td>{{ documento.codigo_fuente }}</td>
+              <td>{{ documento.codigo }}</td>
+              <td>{{ documento.descripcion }}</td>
+              <td>{{ documento.tipo }}</td>
+              <td>{{ documento.codigo_tareas }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA VERSIONES -->
+  <div class="container-each-table title-report-verde">
+    <div class="row">
+      <div class="col-12 text-center">
+        <label for="" class="fs-4 title-report">Versiones</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead class="table-head">
+            <tr>
+              <th scope="col">Codigo</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            <tr *ngFor="let version of versiones">
+              <td>{{ version.codigo }}</td>
+              <td>{{ version.descripcion }}</td>
+              <td>{{ version.fecha }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

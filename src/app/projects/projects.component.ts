@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Users } from '../models/users';
 
 // PARA PDF
-const jsPDF = require('jspdf'); 
+const jsPDF = require('jspdf');
 
 @Component({
   selector: 'app-projects',
@@ -15,23 +15,12 @@ const jsPDF = require('jspdf');
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  
+
   constructor(
     private _router: Router,
     private http: HttpClient,
     private userService: UserService
   ) {}
-
-  public downloadPDF(): void {
-    const doc = new jsPDF();
-
-    doc.text('Hello world!', 10, 10);
-    doc.save('hello-world.pdf');
-    doc.save(this.http.get<any>('http://localhost:8000/').subscribe((data) => {
-      console.log(data);
-    }));
-     
-  }
 
   selectedProject: Projects = new Projects();
   selectedTarea: Tasks = new Tasks();
@@ -50,7 +39,7 @@ export class ProjectsComponent implements OnInit {
 
   isAdmin() {
     let userAdmin = this.userService.getValue('isAdmin');
-    
+
     if (userAdmin == 'si') {
       this.isAdminUser = true;
       this.roleText = 'Administrador';
@@ -113,7 +102,8 @@ export class ProjectsComponent implements OnInit {
     .subscribe((data) => {
       this.users = data.empleados;
       console.log(data);
-      
+
     });
   }
+
 }

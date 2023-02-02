@@ -3,3 +3,12 @@
   right: 60px;
   top: 80px;
 }
+
+.container-btns {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.add-btn-project {
+  margin-left: 10px;
+}
