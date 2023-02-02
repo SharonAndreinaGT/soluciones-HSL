@@ -33,6 +33,8 @@ export class ProjectsComponent implements OnInit {
      
   }
 
+  // ARRAYS GENERALES
+
   selectedProject: Projects = new Projects();
   selectedTarea: Tasks = new Tasks();
   projects: Projects[];
@@ -41,12 +43,15 @@ export class ProjectsComponent implements OnInit {
   isAdminUser: boolean = false;
   roleText: string = '';
 
+  // FUNCION PARA TRAER LOS PROYECTOS DEL BACKEND A TRAVÉS DEL METODO GET
   ngOnInit() {
     this.isAdmin();
     this.http.get<any>('http://localhost:8000/proyectos').subscribe((data) => {
       this.projects = data.proyectos.activos;
     });
   }
+
+  // FUNCION PARA INICIAR COMO ADMIN O USUARIO
 
   isAdmin() {
     let userAdmin = this.userService.getValue('isAdmin');
@@ -62,6 +67,9 @@ export class ProjectsComponent implements OnInit {
       this._router.navigate(['login']);
     }
   }
+
+  // FUNCION PARA ABRIR Y EDITAR UN PROYECTO QUE INICIA A TRAVÉS DE LA RUTA 
+  // QUE TRAE COMO REPUESTA DEL BACKEND  
 
   addOrEdit() {
     if (this.selectedProject.id === 0) {
@@ -83,9 +91,13 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
+  // ESTA FUNCION INICIA EL NUEVO PROJECTO SOBRE EL CUAL SE VA A TRABAJAR
+
   openForEdit(project: Projects) {
     this.selectedProject = project;
   }
+
+  // FUNCION PARA CREAR UNA NUEVA TAREA SOBRE UN PROYECTO
 
   crearTarea() {
     this.http
@@ -107,6 +119,8 @@ export class ProjectsComponent implements OnInit {
         this.tasks = data.tareas;
       });
   }
+//  CONEXION PARA MOSTRAR EL EMPLEADO QUE PERTENECE AL PROYECTO,
+//   A TRAVES DEL METODO GET RETORNA EL VALOR DEL BACKEND
 
   empleadoProyecto(project: Projects){
     this.http.get<any>('http://localhost:8000/proyecto/'+ project.codigo +'/empleados')
